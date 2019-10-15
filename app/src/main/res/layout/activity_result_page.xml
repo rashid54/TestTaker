@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".resultPageActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/boxTestInfo"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/boxTestDetails"
+            android:layout_toLeftOf="@id/boxScore"
+            android:padding="15dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name of the Test"
+                android:layout_alignParentTop="true"
+                android:id="@+id/txtTestName"
+                android:textSize="25dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTestTopic"
+                android:layout_below="@id/txtTestName"
+                android:layout_alignParentLeft="true"
+                android:text="Topic: "
+                android:textSize="20dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTestTime"
+                android:text="Time: "
+                android:textSize="20dp"
+                android:layout_below="@id/txtTestTopic"
+                android:layout_alignParentLeft="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtQues"
+                android:text="Ques: "
+                android:textSize="20dp"
+                android:layout_below="@id/txtTestTime"
+                android:layout_alignParentLeft="true"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:background="@color/colorAccent"
+            android:id="@+id/boxScore"
+            android:layout_alignBottom="@id/boxTestDetails"
+            android:padding="15dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score:"
+                android:id="@+id/txtTestScore"
+                android:layout_centerInParent="true"
+                android:textSize="20dp"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/boxTestInfo"
+        android:text="Main Menu"
+        android:id="@+id/btnMainMenu"
+        />
+</RelativeLayout>

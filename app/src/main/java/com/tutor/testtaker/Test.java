@@ -51,4 +51,16 @@ public class Test {
     public ArrayList<Ques> getQueslist() {
         return queslist;
     }
+
+    public static long totalCorrectAns(ArrayList<Ques> list)
+    {
+        int sum=0;
+        for(Ques q:list)
+        {
+            if(q.getAns_correct()==q.getAns_given()){
+                sum++;
+            }
+        }
+        return sum;
+    }
 }
