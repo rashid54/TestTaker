@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TestTaker</string>
+    <string name="testName">testName</string>
+    <string name="testTopic">testTopic</string>
+    <string name="resultTime">resultTime</string>
+    <string name="totalQues">totalQues</string>
+    <string name="testScore">testScore</string>
+    <string name="resultBundle">resultBundle</string>
 </resources>

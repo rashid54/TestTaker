@@ -29,6 +29,7 @@ public class Ques {
         this.question = question;
         this.ans = ans;
         this.ans_correct = ans_correct;
+        this.ans_given=null;
     }
 
     public Ques(String question,String ans0,String ans1,String ans2,String ans3, String ans_correct) {
@@ -39,6 +40,7 @@ public class Ques {
         this.ans[2]=ans2;
         this.ans[3]=ans3;
         this.ans_correct = ans_correct;
+        this.ans_given=null;
     }
 
     public String getQuestion() {

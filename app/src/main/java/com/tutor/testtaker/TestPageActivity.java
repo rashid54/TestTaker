@@ -43,8 +43,9 @@ public class TestPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 timer.cancel();
-                Intent intent=new Intent(TestPageActivity.this,MainActivity.class);
+                Intent intent=new Intent(TestPageActivity.this,resultPageActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra(getString(R.string.resultBundle),getResultBundle());
                 startActivity(intent);
                 //TODO: code for finishing the the test
             }
@@ -78,9 +79,10 @@ public class TestPageActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 Toast.makeText(TestPageActivity.this,"!! The Time is UP !!",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(TestPageActivity.this,MainActivity.class);
+                Intent intent=new Intent(TestPageActivity.this,resultPageActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 timer.cancel();
+                intent.putExtra(getString(R.string.resultBundle),getResultBundle());
                 startActivity(intent);
             }
         };
@@ -100,5 +102,17 @@ public class TestPageActivity extends AppCompatActivity {
     public void onBackPressed() {
         timer.cancel();
         startActivity(new Intent(TestPageActivity.this,MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
+    }
+
+    public Bundle getResultBundle()
+    {
+        Bundle bundleResult=new Bundle();
+        bundleResult.putString(getString(R.string.testName),txtTestName.getText().toString());
+        bundleResult.putString(getString(R.string.testTopic),"The Topic of the test");
+        bundleResult.putString(getString(R.string.resultTime), String.valueOf(time));
+        bundleResult.putString(getString(R.string.totalQues), String.valueOf(quesList.size()));
+        bundleResult.putString(getString(R.string.testScore), String.valueOf(Test.totalCorrectAns(quesList)));
+
+        return bundleResult;
     }
 }

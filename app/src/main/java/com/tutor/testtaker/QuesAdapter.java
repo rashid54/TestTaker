@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,13 +39,36 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        // set question and answers texts
         holder.txtQuestion.setText(queslist.get(position).getQuestion());
         holder.rdobtnAns0.setText(queslist.get(position).getAns()[0]);
         holder.rdobtnAns1.setText(queslist.get(position).getAns()[1]);
         holder.rdobtnAns2.setText(queslist.get(position).getAns()[2]);
         holder.rdobtnAns3.setText(queslist.get(position).getAns()[3]);
 
+        holder.rdogrpAnswer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rdobtnAns0:
+                        queslist.get(position).setAns_given(queslist.get(position).getAns()[0]);
+                        break;
+                    case R.id.rdobtnAns1:
+                        queslist.get(position).setAns_given(queslist.get(position).getAns()[1]);
+                        break;
+                    case R.id.rdobtnAns2:
+                        queslist.get(position).setAns_given(queslist.get(position).getAns()[2]);
+                        break;
+                    case R.id.rdobtnAns3:
+                        queslist.get(position).setAns_given(queslist.get(position).getAns()[3]);
+                        break;
+                    default:
+                        queslist.get(position).setAns_given(null);
+                        break;
+                }
+            }
+        });
     }
 
     @Override
