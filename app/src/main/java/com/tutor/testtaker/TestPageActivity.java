@@ -112,6 +112,7 @@ public class TestPageActivity extends AppCompatActivity {
         bundleResult.putString(getString(R.string.resultTime), String.valueOf(time));
         bundleResult.putString(getString(R.string.totalQues), String.valueOf(quesList.size()));
         bundleResult.putString(getString(R.string.testScore), String.valueOf(Test.totalCorrectAns(quesList)));
+        bundleResult.putParcelableArrayList(getString(R.string.quesList),quesList);
 
         return bundleResult;
     }

@@ -59,6 +59,26 @@ public class Test {
         {
             if(q.getAns_correct()==q.getAns_given()){
                 sum++;
+                q.setCorrect(true);
+            }
+            else{
+                q.setCorrect(false);
+            }
+        }
+        return sum;
+    }
+
+    public long totalCorrectAns()
+    {
+        int sum=0;
+        for(Ques q:queslist)
+        {
+            if(q.getAns_correct()==q.getAns_given()){
+                sum++;
+                q.setCorrect(true);
+            }
+            else {
+                q.setCorrect(false);
             }
         }
         return sum;

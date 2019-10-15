@@ -1,13 +1,36 @@
 package com.tutor.testtaker;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Arrays;
 
-public class Ques {
+public class Ques implements Parcelable {
     private String question;
     private String ans[];
     private String ans_correct;
     private String ans_given;
     private boolean correct;
+
+    protected Ques(Parcel in) {
+        question = in.readString();
+        ans = in.createStringArray();
+        ans_correct = in.readString();
+        ans_given = in.readString();
+        correct = in.readByte() != 0;
+    }
+
+    public static final Creator<Ques> CREATOR = new Creator<Ques>() {
+        @Override
+        public Ques createFromParcel(Parcel in) {
+            return new Ques(in);
+        }
+
+        @Override
+        public Ques[] newArray(int size) {
+            return new Ques[size];
+        }
+    };
 
     public boolean isCorrect() {
         return correct;
@@ -74,5 +97,19 @@ public class Ques {
                 ", ans=" + Arrays.toString(ans) +
                 ", ans_correct='" + ans_correct + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(question);
+        dest.writeStringArray(ans);
+        dest.writeString(ans_correct);
+        dest.writeString(ans_given);
+        dest.writeByte((byte) (correct ? 1 : 0));
     }
 }

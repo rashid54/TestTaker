@@ -21,6 +21,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     private static final String TAG = "QuesAdapter";
     ArrayList<Ques> queslist;
     Context context;
+    boolean isResult;
 
     public QuesAdapter() {
     }
@@ -28,7 +29,15 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     public QuesAdapter(ArrayList<Ques> queslist, Context context) {
         this.queslist = queslist;
         this.context = context;
+        this.isResult=false;
     }
+
+    public QuesAdapter(ArrayList<Ques> queslist, Context context,boolean isResult) {
+        this.queslist = queslist;
+        this.context = context;
+        this.isResult=isResult;
+    }
+
 
     @NonNull
     @Override
@@ -47,28 +56,48 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
         holder.rdobtnAns2.setText(queslist.get(position).getAns()[2]);
         holder.rdobtnAns3.setText(queslist.get(position).getAns()[3]);
 
-        holder.rdogrpAnswer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
-                    case R.id.rdobtnAns0:
-                        queslist.get(position).setAns_given(queslist.get(position).getAns()[0]);
-                        break;
-                    case R.id.rdobtnAns1:
-                        queslist.get(position).setAns_given(queslist.get(position).getAns()[1]);
-                        break;
-                    case R.id.rdobtnAns2:
-                        queslist.get(position).setAns_given(queslist.get(position).getAns()[2]);
-                        break;
-                    case R.id.rdobtnAns3:
-                        queslist.get(position).setAns_given(queslist.get(position).getAns()[3]);
-                        break;
-                    default:
-                        queslist.get(position).setAns_given(null);
-                        break;
+        if(isResult)
+        {
+            for (int i = 0; i < holder.rdogrpAnswer.getChildCount(); i++) {
+                holder.rdogrpAnswer.getChildAt(i).setEnabled(false);
+                if(queslist.get(position).getAns()[i].equals(queslist.get(position).getAns_given()))
+                {
+                    holder.rdogrpAnswer.getChildAt(i).setEnabled(true);
+                    holder.rdogrpAnswer.check(holder.rdogrpAnswer.getChildAt(i).getId());
+                }
+                if(queslist.get(position).isCorrect())
+                {
+                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+                }
+                else{
+                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
                 }
             }
-        });
+        }
+        else{
+            holder.rdogrpAnswer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup group, int checkedId) {
+                    switch (checkedId){
+                        case R.id.rdobtnAns0:
+                            queslist.get(position).setAns_given(queslist.get(position).getAns()[0]);
+                            break;
+                        case R.id.rdobtnAns1:
+                            queslist.get(position).setAns_given(queslist.get(position).getAns()[1]);
+                            break;
+                        case R.id.rdobtnAns2:
+                            queslist.get(position).setAns_given(queslist.get(position).getAns()[2]);
+                            break;
+                        case R.id.rdobtnAns3:
+                            queslist.get(position).setAns_given(queslist.get(position).getAns()[3]);
+                            break;
+                        default:
+                            queslist.get(position).setAns_given(null);
+                            break;
+                    }
+                }
+            });
+        }
     }
 
     @Override

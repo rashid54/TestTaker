@@ -6,4 +6,5 @@
     <string name="totalQues">totalQues</string>
     <string name="testScore">testScore</string>
     <string name="resultBundle">resultBundle</string>
+    <string name="quesList">quesList</string>
 </resources>

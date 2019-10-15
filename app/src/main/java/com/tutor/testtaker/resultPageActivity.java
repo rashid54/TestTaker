@@ -1,6 +1,8 @@
 package com.tutor.testtaker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,11 +11,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class resultPageActivity extends AppCompatActivity {
     private static final String TAG = "resultPageActivity";
 
     TextView txtTestName,txtTestTopic,txtTestTime,txtTestScore,txtQues;
     Button btnMainMenu;
+    RecyclerView recvQueslist;
+    ArrayList<Ques> quesList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +36,7 @@ public class resultPageActivity extends AppCompatActivity {
             txtTestTime.setText("Time: "+resultBundle.getString(getString(R.string.resultTime),"time not received"));
             txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
             txtQues.setText("Ques: "+resultBundle.getString(getString(R.string.totalQues),"not found"));
-
+            quesList=resultBundle.getParcelableArrayList(getString(R.string.quesList));
         }catch (NullPointerException ne)
         {
             Log.d(TAG, "onCreate: Null resultbundle found in resultPage");
@@ -43,6 +49,11 @@ public class resultPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        recvQueslist.setLayoutManager(new LinearLayoutManager(this));
+        QuesAdapter adapter=new QuesAdapter(this.quesList,this,true);
+        recvQueslist.setAdapter(adapter);
+        adapter.setQueslist(quesList);
     }
 
     public void init(){
@@ -52,6 +63,7 @@ public class resultPageActivity extends AppCompatActivity {
         txtTestScore=findViewById(R.id.txtTestScore);
         txtQues=findViewById(R.id.txtQues);
         btnMainMenu=findViewById(R.id.btnMainMenu);
+        recvQueslist=findViewById(R.id.recvQueslist);
     }
 
     @Override

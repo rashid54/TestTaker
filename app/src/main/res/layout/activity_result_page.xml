@@ -84,4 +84,16 @@
         android:text="Main Menu"
         android:id="@+id/btnMainMenu"
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/btnMainMenu"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:id="@+id/recvQueslist"
+            />
+    </RelativeLayout>
 </RelativeLayout>
