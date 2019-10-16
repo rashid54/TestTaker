@@ -45,7 +45,7 @@ public class resultPageActivity extends AppCompatActivity {
         btnMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(resultPageActivity.this,MainActivity.class);
+                Intent intent=new Intent(resultPageActivity.this,StartTestActivity.class);
                 startActivity(intent);
             }
         });
@@ -68,7 +68,7 @@ public class resultPageActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(resultPageActivity.this,MainActivity.class);
+        Intent intent=new Intent(resultPageActivity.this,StartTestActivity.class);
         startActivity(intent);
     }
 }
