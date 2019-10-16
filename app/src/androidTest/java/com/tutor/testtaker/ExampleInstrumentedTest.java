@@ -25,3 +25,18 @@ public class ExampleInstrumentedTest {
         assertEquals("com.tutor.testtaker", appContext.getPackageName());
     }
 }
+
+//package com.tutor.testtaker;
+
+//        import androidx.appcompat.app.AppCompatActivity;
+
+  //      import android.os.Bundle;
+
+//public class LoginAct extends AppCompatActivity {
+
+  //  @Override
+   // protected void onCreate(Bundle savedInstanceState) {
+       // super.onCreate(savedInstanceState);
+    //    setContentView(R.layout.activity_login);
+   // }
+//}
