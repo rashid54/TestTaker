@@ -4,7 +4,7 @@
         <shape>
             <corners android:radius="2dip" />
             <solid
-                android:color="@color/colorAccent"
+                android:color="@color/yellow"
                 />
         </shape>
     </item>
@@ -14,7 +14,7 @@
             <shape>
                 <corners android:radius="2dip" />
                 <solid
-                    android:color="@color/colorPrimary"
+                    android:color="@color/dark_blue"
                     />
             </shape>
         </clip>
