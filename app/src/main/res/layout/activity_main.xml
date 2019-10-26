@@ -4,94 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_launcher_background"
+    android:background="@color/deep_blue"
     tools:context=".MainActivity">
 
 
-    <EditText
-        android:id="@+id/eName"
-        android:layout_width="227dp"
-         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        android:background="@drawable/bg_edit"
-        android:padding="16dp"
-        android:ems="10"
-        android:fontFamily="@font/denk_one"
-        android:hint=" User Name"
-        android:textColorHint="@color/login_form_details"
-        android:inputType="textPersonName"
+        android:contentDescription="logo"
+
+
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/ePassword"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/bg_edit"
-        android:cursorVisible="true"
-        android:ems="10"
-        android:fontFamily="@font/denk_one"
-        android:hint="password"
-        android:textColorHint="@color/login_form_details"
-        android:inputType="textPassword"
-        android:padding="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
 
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eName" />
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/bg_edit"
-        android:padding="16dp"
-
-        android:fontFamily="@font/denk_one"
-        android:text="Login"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ePassword" />
-
-    <TextView
-        android:id="@+id/tvInfo"
-        android:layout_width="277dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="20dp"
-       android:background="@drawable/bg_edit"
-        android:text="No of Attemps Remaining: "
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.14" />
-
-    <TextView
-        android:id="@+id/txtLockTimer"
-        android:layout_width="143dp"
-        android:layout_height="53dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/bg_edit"
-        android:text="15"
-        android:textColor="@color/yellow"
-        android:padding="16dp"
-
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.436"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvInfo"
-        android:textAlignment="center"
-
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>

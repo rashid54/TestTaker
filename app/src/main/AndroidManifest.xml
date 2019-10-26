@@ -12,8 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartTestActivity"></activity>
-        <activity android:name=".LoginAct" />
+        <activity android:name=".Login"></activity>
+        <activity android:name=".StartTestActivity" />
+        
         <activity android:name=".resultPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.RESULT" />

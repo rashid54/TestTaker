@@ -67,10 +67,12 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
                 }
                 if(queslist.get(position).isCorrect())
                 {
-                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.colorPrimary));
+
+                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.light_green));
+
                 }
                 else{
-                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.colorAccent));
+                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.red));
                 }
             }
         }
