@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/deep_blue"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -16,9 +16,10 @@
         android:contentDescription="logo"
 
 
-        android:src="@drawable/logo"
+        android:src="@drawable/ic_ghgfh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
