@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Timer = new CountDownTimer(4000,1000) {
+        Timer = new CountDownTimer(1500,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 Log.d(TAG, "onTick: running1");

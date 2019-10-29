@@ -1,22 +1,114 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartTestActivity"
-    android:background="@drawable/ic_launcher_background">
+    android:background="@drawable/ic_launcher_background"
+    tools:context=".Login">
+
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="140dp"
+        android:layout_height="125dp"
+
+        android:contentDescription="logo"
+
+
+        android:src="@drawable/ic_ghgfh"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.027" />
 
     <Button
+        android:id="@+id/btnTeach"
+        android:layout_width="227dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="168dp"
+
+        android:background="@drawable/bg_edit"
+        android:padding="16dp"
+        android:ems="10"
+        android:fontFamily="@font/denk_one"
+        android:hint="Give Test"
+        android:textColorHint="@color/login_form_details"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnStudent"
+        android:layout_width="227dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
+
+        android:background="@drawable/bg_edit"
+        android:ems="10"
+        android:fontFamily="@font/denk_one"
+        android:hint=" Take Test"
+
+        android:padding="16dp"
+        android:textColorHint="@color/login_form_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnTeach" />
+
+    <Button
+        android:id="@+id/btnStat"
+        android:layout_width="227dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="60dp"
+
+        android:background="@drawable/bg_edit"
+        android:ems="10"
+        android:fontFamily="@font/denk_one"
+        android:hint=" Stats "
+
+        android:padding="16dp"
+        android:textColorHint="@color/login_form_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStudent" />
+
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="227dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="56dp"
+
+        android:background="@drawable/bg_edit"
+        android:ems="10"
+        android:fontFamily="@font/denk_one"
+        android:hint=" Logout"
+
+        android:padding="16dp"
+        android:textColorHint="@color/login_form_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStat" />
+
+    <Button
+        android:id="@+id/btnProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Test"
-        android:layout_centerInParent="true"
-        android:background="@color/dark_blue"
-        android:textColor="@color/light_green"
-        android:id="@+id/btnStartTest"
-        android:elevation="10dp"
+        android:layout_marginTop="136dp"
+        android:background="@color/red"
+        android:drawableEnd="@drawable/eye"
+        android:fontFamily="@font/denk_one"
+        android:padding="16dp"
+        android:text="Go to profile"
+        app:layout_constraintEnd_toEndOf="parent"
 
-        />
-
-</RelativeLayout>
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

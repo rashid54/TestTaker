@@ -25,6 +25,8 @@ public class Login extends AppCompatActivity {
     private int counter = 5;
     private CountDownTimer lockTimer;
     private TextView txtLockTimer;
+    private  TextView SignUpMessage;
+    private Button SignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +38,21 @@ public class Login extends AppCompatActivity {
         Password = findViewById(R.id.ePassword);
         Info = findViewById(R.id.tvInfo);
         Login = findViewById(R.id.btnLogin);
+        SignUpMessage=findViewById(R.id.SignUpMsg);
+        SignUp = findViewById(R.id.btnSignUp);
 
+       // SignUpMessage.setText("Not a member yet?");
+        SignUpMessage.setVisibility(View.VISIBLE);
         Info.setText("No of attempts remaining: 5");
+     SignUp.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View view) {
+             Intent intent = new Intent(Login.this, SignUp.class);
 
+
+             startActivity(intent);
+         }
+     }) ;
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
