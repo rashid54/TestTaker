@@ -7,9 +7,13 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -27,6 +31,7 @@ public class Login extends AppCompatActivity {
     private TextView txtLockTimer;
     private  TextView SignUpMessage;
     private Button SignUp;
+    private CheckBox showpassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +45,19 @@ public class Login extends AppCompatActivity {
         Login = findViewById(R.id.btnLogin);
         SignUpMessage=findViewById(R.id.SignUpMsg);
         SignUp = findViewById(R.id.btnSignUp);
+        showpassword=findViewById(R.id.checkbox);
+
+        showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b) {
+                    Password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+                else {
+                    Password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+            }
+        });
 
        // SignUpMessage.setText("Not a member yet?");
         SignUpMessage.setVisibility(View.VISIBLE);

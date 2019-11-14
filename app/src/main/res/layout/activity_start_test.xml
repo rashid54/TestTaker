@@ -33,7 +33,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="168dp"
 
-        android:background="@drawable/bg_edit"
+        android:background="@drawable/round_cornered"
         android:padding="16dp"
         android:ems="10"
         android:fontFamily="@font/denk_one"
@@ -50,7 +50,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="48dp"
 
-        android:background="@drawable/bg_edit"
+        android:background="@drawable/round_cornered"
         android:ems="10"
         android:fontFamily="@font/denk_one"
         android:hint=" Take Test"
@@ -67,7 +67,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
 
-        android:background="@drawable/bg_edit"
+        android:background="@drawable/round_cornered"
         android:ems="10"
         android:fontFamily="@font/denk_one"
         android:hint=" Stats "
@@ -85,7 +85,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="56dp"
 
-        android:background="@drawable/bg_edit"
+        android:background="@drawable/round_cornered"
         android:ems="10"
         android:fontFamily="@font/denk_one"
         android:hint=" Logout"
@@ -100,9 +100,9 @@
         android:id="@+id/btnProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:background="@color/red"
-        android:drawableEnd="@drawable/eye"
+        android:layout_marginTop="124dp"
+        android:background="@drawable/cornered_red"
+        android:drawableEnd="@drawable/arrow"
         android:fontFamily="@font/denk_one"
         android:padding="16dp"
         android:text="Go to profile"
