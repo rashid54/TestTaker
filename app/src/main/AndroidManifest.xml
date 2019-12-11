@@ -7,13 +7,17 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/icon"
+        android:label="Test Taker"
+        android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartTestActivity"></activity>
-        <activity android:name=".LoginAct" />
+        <activity android:name=".SignUp">
+            <intent-filter> <action android:name="android.intent.action.SignUp"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login" />
+        <activity android:name=".StartTestActivity" />
         <activity android:name=".resultPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.RESULT" />

@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:background="@color/colorAccent"
+            android:background="@drawable/cornerd_pink"
             android:id="@+id/boxScore"
             android:layout_alignBottom="@id/boxTestDetails"
             android:padding="15dp"
