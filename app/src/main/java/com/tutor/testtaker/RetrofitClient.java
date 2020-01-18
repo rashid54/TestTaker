@@ -12,7 +12,7 @@ public interface RetrofitClient {
     @GET("profile/")
     Call<List<UserProfile>> getProfileList();
 
-    @POST("login/")
-    Call<String> getAuthToken(@Body String username,String password);
+    @POST("login")
+    Call<Loginresponse> getAuthToken(@Body logindata logdata);
 
 }

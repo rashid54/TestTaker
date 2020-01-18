@@ -13,9 +13,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIPoint {
     private static final String TAG = "APIPoint";
-    private static String BASE_URL = "presslu1.pythonanywhere.com/api/";
-    Retrofit retrofit;
-    RetrofitClient retrofitclient;
+    private static String BASE_URL = "http://presslu1.pythonanywhere.com/api/";
+    public Retrofit retrofit;
+
+    public RetrofitClient retrofitclient;
 
     List<UserProfile> users;
     String string;
@@ -31,6 +32,7 @@ public class APIPoint {
     }
 
     public ArrayList<UserProfile> getallprofile(){
+        Log.d(TAG, "getallprofile: started");
         users = null;
         Call<List<UserProfile>> getProfileList = retrofitclient.getProfileList();
         getProfileList.enqueue(new Callback<List<UserProfile>>() {
@@ -38,6 +40,7 @@ public class APIPoint {
             public void onResponse(Call<List<UserProfile>> call, Response<List<UserProfile>> response) {
                 Log.d(TAG, "onResponse: "+response.code());
                 users = response.body();
+                Log.d(TAG, "onResponse: "+users.get(0).getUsername());
             }
 
             @Override
@@ -51,21 +54,22 @@ public class APIPoint {
     }
 
     public String getAuthToken(String username,String password){
-
-        Call<String> getAuthToken= retrofitclient.getAuthToken(username,password);
-        getAuthToken.enqueue(new Callback<String>() {
+        Log.d(TAG, "getAuthToken: started");
+        string= null;
+        logindata data= new logindata(username,password);
+        Call<Loginresponse> getAuthToken= retrofitclient.getAuthToken(data);
+        getAuthToken.enqueue(new Callback<Loginresponse>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.d(TAG, "onResponse: getauthtoken"+response.code());
-                if(response.code()== 200){
-                    string= response.body();
-                }
-                else string = null;
+            public void onResponse(Call<Loginresponse> call, Response<Loginresponse> response) {
+                Log.d(TAG, "onResponse: getauthtoken started");
+                string= response.body().getToken();
             }
 
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                Log.d(TAG, "onFailure: getauthtoken");
+            public void onFailure(Call<Loginresponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: authtoken");
+                string=null;
+
             }
         });
         return string;
