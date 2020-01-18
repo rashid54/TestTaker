@@ -22,6 +22,8 @@ import android.widget.TextView;
 public class Login extends AppCompatActivity {
     private static final String TAG = "Login";
 
+    private APIPoint apipoint;
+
     private EditText Name;
     private EditText Password;
     private TextView Info;
@@ -38,6 +40,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        apipoint = new APIPoint();
 
         Name= findViewById(R.id.eName);
         Password = findViewById(R.id.ePassword);
@@ -97,7 +100,7 @@ public class Login extends AppCompatActivity {
     }
 
     private void validate(String userName, String userPassword){
-        if((userName.equals("Student")) && (userPassword.equals("1234"))){
+        if(apipoint.getAuthToken(userName,userPassword)!= null){
             Intent intent = new Intent(Login.this, StartTestActivity.class);
             Log.d(TAG, "validate: Started");
 
