@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -44,6 +45,8 @@ public class Login extends AppCompatActivity {
     private Button SignUp;
     private CheckBox showpassword;
 
+    private UserData userdata;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +60,8 @@ public class Login extends AppCompatActivity {
         SignUpMessage=findViewById(R.id.SignUpMsg);
         SignUp = findViewById(R.id.btnSignUp);
         showpassword=findViewById(R.id.checkbox);
+
+        userdata= new UserData(this);
 
         showpassword.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -78,6 +83,7 @@ public class Login extends AppCompatActivity {
          public void onClick(View view) {
              Intent intent = new Intent(Login.this, SignUp.class);
              startActivity(intent);
+             //todo create queeestion dialog
 //             CreateQuestionDialog createQuestionDialog= new CreateQuestionDialog();
 //             createQuestionDialog.show(getSupportFragmentManager(),"Create Question Dialog");
          }
@@ -119,6 +125,11 @@ public class Login extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: validate started");
+                try {
+                    userdata.setAuthToken(response.getString("token"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 Intent intent = new Intent(Login.this, StartTestActivity.class);
                 startActivity(intent);
             }
