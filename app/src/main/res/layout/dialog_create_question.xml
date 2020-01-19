@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    app:cardPreventCornerOverlap="true"
+    android:padding="8dp"
+    android:background="@drawable/ic_launcher_background"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_launcher_background"
+
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:id="@+id/txtmakeques"
+            android:text="Question: "
+            android:textFontWeight="20"
+            android:textColor="@color/red"
+            android:textStyle="bold|italic"
+            android:textSize="20dp"
+            android:layout_alignParentTop="true"
+            />
+        <EditText
+            android:id="@+id/eN5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            android:background="@drawable/round_cornered"
+
+            android:fontFamily="@font/denk_one"
+            android:hint="Enter the Question"
+
+            android:inputType="textShortMessage"
+            android:layout_below="@id/txtmakeques" />
+        <EditText
+            android:id="@+id/eN6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+
+
+
+
+
+            android:layout_below="@id/eN5" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:id="@+id/option"
+            android:layout_below="@id/eN6"
+            >
+
+            <RadioButton
+                android:id="@+id/opt1"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                />
+
+
+            <EditText
+                android:id="@+id/eN1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:background="@drawable/round_cornered"
+
+                android:fontFamily="@font/denk_one"
+                android:hint="Enter an option"
+
+                android:inputType="textShortMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/opt2"
+                />
+            <EditText
+                android:id="@+id/eN2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:background="@drawable/round_cornered"
+
+                android:fontFamily="@font/denk_one"
+                android:hint="Enter an option"
+
+                android:inputType="textShortMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/opt3"
+                />
+            <EditText
+                android:id="@+id/eN3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:background="@drawable/round_cornered"
+
+                android:fontFamily="@font/denk_one"
+                android:hint="Enter an option"
+
+                android:inputType="textShortMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <RadioButton
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+
+                android:id="@+id/opt4"
+                />
+            <EditText
+                android:id="@+id/eN4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+
+                android:background="@drawable/round_cornered"
+
+                android:fontFamily="@font/denk_one"
+                android:hint="Enter an option"
+
+                android:inputType="textShortMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/enter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/option"
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="129dp"
+            android:background="@drawable/cornered_red"
+            android:ems="10"
+            android:fontFamily="@font/denk_one"
+            android:hint="Enter"
+            android:padding="16dp"
+
+            android:text="Add"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_alignTop="@+id/txtmakeques"
+            android:layout_marginTop="2dp">
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

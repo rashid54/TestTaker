@@ -74,7 +74,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: signupApi");
-                Toast.makeText(SignUp.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SignUp.this, Login.class);
                 startActivity(intent);
             }
