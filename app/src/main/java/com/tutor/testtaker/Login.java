@@ -3,7 +3,6 @@ package com.tutor.testtaker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -25,7 +24,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -52,7 +50,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        Name= findViewById(R.id.eName);
+        Name= findViewById(R.id.username);
         Password = findViewById(R.id.ePassword);
         Info = findViewById(R.id.tvInfo);
         Login = findViewById(R.id.btnLogin);
