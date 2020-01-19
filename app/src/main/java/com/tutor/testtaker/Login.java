@@ -130,7 +130,7 @@ public class Login extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Intent intent = new Intent(Login.this, StartTestActivity.class);
+                Intent intent = new Intent(Login.this, Animation.class);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {

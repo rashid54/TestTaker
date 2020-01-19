@@ -30,7 +30,7 @@
             />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_below="@id/textView"
@@ -51,11 +51,11 @@
             />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:textSize="25dp"
-            android:layout_below="@id/textView2"
+            android:layout_below="@id/textView1"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="39dp"
@@ -68,11 +68,11 @@
             android:textStyle="bold"
           />
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:textSize="25dp"
-            android:layout_below="@id/textView3"
+            android:layout_below="@id/textView2"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="39dp"
@@ -86,10 +86,10 @@
             tools:layout_editor_absoluteX="43dp"
             tools:layout_editor_absoluteY="199dp" />
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:layout_below="@id/textView4"
+            android:layout_below="@id/textView3"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="39dp"
@@ -107,15 +107,12 @@
             android:id="@+id/btnhome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textView3"
+            android:layout_below="@id/textView4"
 
 
-
-
-            android:layout_marginStart="334dp"
-            android:layout_marginTop="310dp"
-            android:layout_marginEnd="29dp"
-            android:layout_marginBottom="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="104dp"
+            android:layout_marginEnd="46dp"
             android:background="@drawable/ic_home_black_24dp" />
     </RelativeLayout>
 </RelativeLayout>
