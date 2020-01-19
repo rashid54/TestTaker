@@ -3,6 +3,7 @@ package com.tutor.testtaker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -17,6 +18,18 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Login extends AppCompatActivity {
@@ -97,24 +110,41 @@ public class Login extends AppCompatActivity {
     }
 
     private void validate(String userName, String userPassword){
-        VolleyPoint volley= new VolleyPoint();
-        String str= volley.getAuthToken(userName,userPassword,this);
+        Log.d(TAG, "validate: ");
+        String url = "https://presslu1.pythonanywhere.com/api/login/";
 
-        if((userName.equals("Student")) && (userPassword.equals("1234"))){
-            Intent intent = new Intent(Login.this, StartTestActivity.class);
-            Log.d(TAG, "validate: Started");
+        Map<String,String> logindata= new HashMap<>();
+        logindata.put("username",userName);
+        logindata.put("password",userPassword);
 
-            startActivity(intent);
-        }else{
-            counter--;
-
-            Info.setText("No of attempts remaining: " + counter);
-
-            if(counter == 0){
-                Login.setEnabled(false);
-                txtLockTimer.setVisibility(View.VISIBLE);
-                lockTimer.start();
-                Log.d(TAG, "validate: timer started");
+        JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.POST, url, new JSONObject(logindata), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, "onResponse: validate started");
+                Intent intent = new Intent(Login.this, StartTestActivity.class);
+                startActivity(intent);
             }
-        }
-    } }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse: validate started");
+                counter--;
+
+                Info.setText("No of attempts remaining: " + counter);
+
+                if(counter == 0){
+                    Login.setEnabled(false);
+                    txtLockTimer.setVisibility(View.VISIBLE);
+                    lockTimer.start();
+                    Log.d(TAG, "validate: timer started");
+                }
+            }
+        });
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(jsonObjectRequest);
+        requestQueue.start();
+
+    }
+
+}
