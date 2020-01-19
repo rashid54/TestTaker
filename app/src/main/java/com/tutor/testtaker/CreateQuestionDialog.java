@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,10 +38,12 @@ public class CreateQuestionDialog extends DialogFragment {
     private String ans;
     private Button btnCreate;
     private RadioGroup option;
+    private UserData userdata;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        Log.d(TAG, "onCreateDialog: CreateQuestionDialog");
         View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_create_question,null);
         AlertDialog.Builder builder= new AlertDialog.Builder(getActivity())
                 .setTitle("Create Question")
@@ -51,13 +54,14 @@ public class CreateQuestionDialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 int checkedRadioButtonId = option.getCheckedRadioButtonId();
-                if (checkedRadioButtonId == opt1.getId()) {
+                Log.d(TAG, "onClick: started"+checkedRadioButtonId);
+                if (checkedRadioButtonId == option.getChildAt(0).getId()) {
                     ans = opt1.getText().toString();
-                } else if (checkedRadioButtonId == opt2.getId()) {
+                } else if (checkedRadioButtonId == option.getChildAt(2).getId()) {
                     ans = opt2.getText().toString();
-                } else if (checkedRadioButtonId == opt3.getId()) {
+                } else if (checkedRadioButtonId == option.getChildAt(4).getId()) {
                     ans = opt3.getText().toString();
-                } else if (checkedRadioButtonId == opt4.getId()) {
+                } else if (checkedRadioButtonId == option.getChildAt(6).getId()) {
                     ans = opt4.getText().toString();
                 } else {
                     Toast.makeText(getContext(), "Please Select The Correct Answer!", Toast.LENGTH_SHORT).show();
@@ -77,12 +81,14 @@ public class CreateQuestionDialog extends DialogFragment {
     }
 
     private void initviews(View view){
-        question= view.findViewById(R.id.txtmakeques);
-        opt1= view.findViewById(R.id.opt1);
-        opt2= view.findViewById(R.id.opt2);
-        opt3= view.findViewById(R.id.opt3);
-        opt4= view.findViewById(R.id.opt4);
+        question= view.findViewById(R.id.eN5);
+        opt1= view.findViewById(R.id.eN1);
+        opt2= view.findViewById(R.id.eN2);
+        opt3= view.findViewById(R.id.eN3);
+        opt4= view.findViewById(R.id.eN4);
         option= view.findViewById(R.id.option);
+        btnCreate= view.findViewById(R.id.enter);
+        userdata = new UserData(getContext());
     }
 
     public void postQuestion(String question,String opt1,String opt2,String opt3,String opt4,String ans){
@@ -110,7 +116,15 @@ public class CreateQuestionDialog extends DialogFragment {
                 Log.d(TAG, "onErrorResponse: CreateQuestion started");
                 Toast.makeText(getContext(), "Question creating failed", Toast.LENGTH_SHORT).show();
             }
-        });
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Log.d(TAG, "getHeaders: "+ userdata.getAuthToken());
+                Map<String, String> params = new HashMap<>();
+                params.put("Authorization","token "+userdata.getAuthToken());
+                return params;
+            }
+        };
 
         RequestQueue requestQueue= Volley.newRequestQueue(getContext());
         requestQueue.add(jsonObjectRequest);

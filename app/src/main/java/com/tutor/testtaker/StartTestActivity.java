@@ -25,6 +25,7 @@ public class StartTestActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Started");
         Logout=findViewById(R.id.btnLogout);
         Profile=findViewById(R.id.btnProfile);
+        Stat = findViewById(R.id.btnStat);
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,6 +51,14 @@ public class StartTestActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(StartTestActivity.this,"Test Started",Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(StartTestActivity.this,TestPageActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
+        Stat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: started");
+                CreateQuestionDialog createQuestionDialog= new CreateQuestionDialog();
+                createQuestionDialog.show(getSupportFragmentManager(),"Create Question Dialog");
             }
         });
     }
