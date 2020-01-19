@@ -10,11 +10,23 @@ public class UserData {
     public static final String DATABASE_NAME= "UserData";
 
     private Context context;
-    private boolean loginStatus;
+    private static boolean loginStatus=false;
 
     public UserData(Context context) {
         this.context = context;
         loginStatus= false;
+    }
+
+    public boolean isLoginStatus() {
+        return loginStatus;
+    }
+
+    public void setLoginStatus(boolean loginStatus) {
+        UserData.loginStatus = loginStatus;
+        SharedPreferences sharedPreferences= context.getSharedPreferences(DATABASE_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putBoolean("loginStatus",loginStatus);
+        editor.commit();
     }
 
     public boolean setAuthToken(String token){

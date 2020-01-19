@@ -57,8 +57,8 @@ public class StartTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StartTestActivity.this, Login.class);
-
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                userData.setLoginStatus(false);
                 startActivity(intent);
             }
         });

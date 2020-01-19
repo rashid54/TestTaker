@@ -128,6 +128,7 @@ public class Login extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                userdata.setLoginStatus(true);
                 Intent intent = new Intent(Login.this, Animation.class);
                 startActivity(intent);
             }

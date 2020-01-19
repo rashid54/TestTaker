@@ -27,7 +27,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-
+        UserData userData = new UserData(this);
+        if(userData.isLoginStatus()==true)
+        {
+            Intent intent = new Intent(Login.this, Animation.class);
+            startActivity(intent);
+        }
 
 
         Timer = new CountDownTimer(1500,1000) {
