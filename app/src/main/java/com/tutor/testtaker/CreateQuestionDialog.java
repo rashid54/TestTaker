@@ -52,7 +52,8 @@ public class CreateQuestionDialog extends DialogFragment {
         Log.d(TAG, "onCreateDialog: CreateQuestionDialog");
         View view = getActivity().getLayoutInflater().inflate(R.layout.dialog_create_question,null);
         AlertDialog.Builder builder= new AlertDialog.Builder(getActivity())
-                .setTitle("Create Question")
+
+
                 .setView(view);
         initviews(view);
 
