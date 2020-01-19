@@ -72,8 +72,8 @@
 
     <Button
         android:id="@+id/btnfinish"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_width="157dp"
+        android:layout_height="75dp"
 
 
         android:layout_alignEnd="@id/btnadd"
@@ -81,13 +81,14 @@
 
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="230dp"
+        android:layout_marginStart="193dp"
+        android:layout_marginEnd="11dp"
 
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="87dp"
-        android:background="@drawable/corneredblue"
+        android:layout_marginBottom="99dp"
+        android:background="@drawable/cornerd_pink"
         android:drawableEnd="@drawable/ic_check_box_black_24dp"
         android:padding="16dp"
-        android:text="Finish" />
+        android:text="Finish"
+        android:textSize="18dp" />
 
 </RelativeLayout>
