@@ -39,7 +39,7 @@
             android:background="@drawable/round_cornered"
 
             android:fontFamily="@font/denk_one"
-            android:hint="Enter the Question"
+            android:hint="   Enter the Question"
 
             android:inputType="textShortMessage"
             android:layout_below="@id/txtmakeques" />

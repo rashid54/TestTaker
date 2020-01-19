@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
 
                 Intent intent = new Intent(MainActivity.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
 
 
                 startActivity(intent);

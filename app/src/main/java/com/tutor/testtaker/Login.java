@@ -79,6 +79,7 @@ public class Login extends AppCompatActivity {
          @Override
          public void onClick(View view) {
              Intent intent = new Intent(Login.this, SignUp.class);
+             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
 
 
              startActivity(intent);
@@ -122,6 +123,7 @@ public class Login extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: validate started");
                 Intent intent = new Intent(Login.this, StartTestActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {
