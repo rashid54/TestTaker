@@ -97,6 +97,9 @@ public class Login extends AppCompatActivity {
     }
 
     private void validate(String userName, String userPassword){
+        VolleyPoint volley= new VolleyPoint();
+        String str= volley.getAuthToken(userName,userPassword,this);
+
         if((userName.equals("Student")) && (userPassword.equals("1234"))){
             Intent intent = new Intent(Login.this, StartTestActivity.class);
             Log.d(TAG, "validate: Started");
