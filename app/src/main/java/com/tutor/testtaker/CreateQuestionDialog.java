@@ -21,7 +21,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -39,6 +41,10 @@ public class CreateQuestionDialog extends DialogFragment {
     private Button btnCreate;
     private RadioGroup option;
     private UserData userdata;
+
+    public interface CreateQuesion{
+        public void onAddQues(int id,Ques ques);
+    }
 
     @NonNull
     @Override
@@ -107,6 +113,19 @@ public class CreateQuestionDialog extends DialogFragment {
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: CreateQuestion started");
                 Toast.makeText(getContext(), "Question created", Toast.LENGTH_SHORT).show();
+                CreateQuesion createQuesion= (CreateQuesion)getActivity();
+                try {
+                    createQuesion.onAddQues(response.getInt("id"),
+                            new Ques(response.getString("question"),
+                                    response.getString("opt1"),
+                                    response.getString("opt2"),
+                                    response.getString("opt3"),
+                                    response.getString("opt4"),
+                                    response.getString("ans")
+                                    ));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 dismiss();
 
             }

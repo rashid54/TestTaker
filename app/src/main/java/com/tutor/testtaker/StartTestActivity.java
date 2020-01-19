@@ -9,6 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class StartTestActivity extends AppCompatActivity {
     private static final String TAG = "StartTestActivity";
     Button btnStartTest;
@@ -16,6 +28,8 @@ public class StartTestActivity extends AppCompatActivity {
     Button Stat;
     Button Logout;
     Button Profile;
+
+    UserData userData;
 
 
     @Override
@@ -26,6 +40,9 @@ public class StartTestActivity extends AppCompatActivity {
         Logout=findViewById(R.id.btnLogout);
         Profile=findViewById(R.id.btnProfile);
         Stat = findViewById(R.id.btnStat);
+
+        userData= new UserData(this);
+
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,9 +74,41 @@ public class StartTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: started");
-                CreateQuestionDialog createQuestionDialog= new CreateQuestionDialog();
-                createQuestionDialog.show(getSupportFragmentManager(),"Create Question Dialog");
+                Intent intent= new Intent(StartTestActivity.this,CreateTest.class);
+                startActivity(intent);
             }
         });
+
+        String url= "https://presslu1.pythonanywhere.com/api/getuser/";
+        JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, "onResponse: started");
+                UserProfile userProfile = null;
+                try {
+                    userProfile = new UserProfile(response.getString("username"), response.getString("email"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    userProfile.setId(response.getInt("id"));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                userData.setUser(userProfile);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse:couldn't save user info to sharedpreferences ");
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> data= new HashMap<>();
+                data.put("Authorization","token "+userData.getAuthToken());
+                return data;
+            }
+        };
     }
 }
