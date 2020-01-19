@@ -53,7 +53,7 @@ public class ViewProfile extends AppCompatActivity {
             }
         });
 
-        String url= "https://presslu1.pythonanywhere.com/api/getuser/";
+        String url= "https://presslu1.pythonanywhere.com/api/getid/";
         JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

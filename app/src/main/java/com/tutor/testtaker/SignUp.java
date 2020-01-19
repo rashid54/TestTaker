@@ -32,6 +32,7 @@ public class SignUp extends AppCompatActivity {
     private EditText username;
     private EditText email;
     private EditText password;
+    private EditText institution;
     private TextView info;
     private Button login;
 
@@ -46,6 +47,7 @@ public class SignUp extends AppCompatActivity {
         name= findViewById(R.id.username);
         username= findViewById(R.id.username);
         email= findViewById(R.id.email);
+        institution= findViewById(R.id.inst);
         password = findViewById(R.id.ePassword);
         info = findViewById(R.id.tvInfo);
         login = findViewById(R.id.btnLogin);
@@ -69,6 +71,7 @@ public class SignUp extends AppCompatActivity {
         signupData.put("username",username.getText().toString());
         signupData.put("email",email.getText().toString());
         signupData.put("password",password.getText().toString());
+        signupData.put("institution",institution.getText().toString());
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(signupData), new Response.Listener<JSONObject>() {
             @Override
