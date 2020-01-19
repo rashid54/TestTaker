@@ -3,6 +3,7 @@ package com.tutor.testtaker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -83,9 +84,6 @@ public class Login extends AppCompatActivity {
          public void onClick(View view) {
              Intent intent = new Intent(Login.this, SignUp.class);
              startActivity(intent);
-             //todo create queeestion dialog
-//             CreateQuestionDialog createQuestionDialog= new CreateQuestionDialog();
-//             createQuestionDialog.show(getSupportFragmentManager(),"Create Question Dialog");
          }
      }) ;
         Login.setOnClickListener(new View.OnClickListener() {

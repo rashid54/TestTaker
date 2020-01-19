@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
@@ -13,8 +13,8 @@
     >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/ic_launcher_background"
 
         >
@@ -39,7 +39,7 @@
             android:background="@drawable/round_cornered"
 
             android:fontFamily="@font/denk_one"
-            android:hint="Enter the Question"
+            android:hint="   Enter the Question"
 
             android:inputType="textShortMessage"
             android:layout_below="@id/txtmakeques" />
@@ -67,7 +67,7 @@
                 android:id="@+id/opt1"
                 android:layout_width="40dp"
                 android:layout_height="wrap_content"
-                />
+                 />
 
 
             <EditText
@@ -153,31 +153,31 @@
 
         </RadioGroup>
 
-        <Button
-            android:id="@+id/enter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/option"
+            <Button
+                android:id="@+id/enter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/option"
 
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="95dp"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="129dp"
-            android:background="@drawable/cornered_red"
-            android:ems="10"
-            android:fontFamily="@font/denk_one"
-            android:hint="Enter"
-            android:padding="16dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="95dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="129dp"
+                android:background="@drawable/cornered_red"
+                android:ems="10"
+                android:fontFamily="@font/denk_one"
+                android:hint="Enter"
+                android:padding="16dp"
 
-            android:text="Add"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                android:text="Add"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="701dp"
+            android:layout_height="match_parent"
 
             android:layout_alignTop="@+id/txtmakeques"
             android:layout_marginTop="2dp">

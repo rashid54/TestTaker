@@ -29,9 +29,9 @@ public class StartTestActivity extends AppCompatActivity {
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartTestActivity.this, SignUp.class);
+                Intent intent = new Intent(StartTestActivity.this, ViewProfile.class);
 
-
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
 
             }
@@ -41,7 +41,7 @@ public class StartTestActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(StartTestActivity.this, Login.class);
 
-
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
         });
