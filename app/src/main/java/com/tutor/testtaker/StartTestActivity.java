@@ -28,7 +28,7 @@ public class StartTestActivity extends AppCompatActivity {
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartTestActivity.this, SignUp.class);
+                Intent intent = new Intent(StartTestActivity.this, ViewProfile.class);
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);

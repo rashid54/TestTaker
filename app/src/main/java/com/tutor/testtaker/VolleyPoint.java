@@ -2,6 +2,7 @@ package com.tutor.testtaker;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -12,6 +13,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import org.json.JSONException;
@@ -97,11 +99,48 @@ public class VolleyPoint {
             }
         });
 
+
+
         RequestQueue requestQueue= Volley.newRequestQueue(context);
         requestQueue.add(jsonObjectRequest);
         requestQueue.start();
         Log.d(TAG, "getAuth: str : "+ str);
         return str;
     }
+    // For creating question
+//    public void postQuestion(String question,String opt1,String opt2,String opt3,String opt4,String ans){
+//        String url= "https://presslu1.pythonanywhere.com/api/question/";
+//        Map<String,String> data= new HashMap<>();
+//
+//        data.put("question",question);
+//        data.put("opt1",opt1);
+//        data.put("opt2",opt2);
+//        data.put("opt3",opt3);
+//        data.put("opt4",opt4);
+//        data.put("ans",ans);
+//
+//        JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.POST, url, new JSONObject(data), new Response.Listener<JSONObject>() {
+//            @Override
+//            public void onResponse(JSONObject response) {
+//                Log.d(TAG, "onResponse: CreateQuestion started");
+//                Toast.makeText(this, "Question Saved", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                Log.d(TAG, "onErrorResponse: CreateQuestion started");
+//                Toast.makeText(this, "Question saving failed", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//        RequestQueue requestQueue= Volley.newRequestQueue(context);
+//        requestQueue.add(jsonObjectRequest);
+//        requestQueue.start();
+//
+//    }
 
+    public void postTest(){
+
+    }
 }

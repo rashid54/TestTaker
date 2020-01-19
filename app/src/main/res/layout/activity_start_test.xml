@@ -103,12 +103,10 @@
         android:layout_marginTop="124dp"
         android:background="@drawable/ic_person_black_24dp"
 
-        android:fontFamily="@font/denk_one"
-        android:padding="16dp"
 
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintHorizontal_bias=".90"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogout" />
 </androidx.constraintlayout.widget.ConstraintLayout>
