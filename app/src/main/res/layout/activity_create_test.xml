@@ -12,7 +12,7 @@
     android:layout_height="match_parent"
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:id="@+id/txttest"
@@ -22,38 +22,40 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:textSize="20dp"
+        android:padding="10dp"
         android:layout_alignParentTop="true"
         />
     <EditText
         android:id="@+id/eN5"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
         android:background="@drawable/round_cornered"
+        android:padding="10dp"
 
         android:fontFamily="@font/denk_one"
-        android:hint="  Enter the Test Name"
+        android:hint="     Enter the Test Name   "
 
         android:inputType="textShortMessage"
         android:layout_below="@id/txttest" />
 
     <Button
         android:id="@+id/btnadd"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="103dp"
+        android:layout_height="52dp"
         android:layout_below="@id/eN5"
 
         android:layout_alignParentStart="true"
-
+        android:background="@drawable/corneredblue"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="273dp"
+        android:layout_marginStart="259dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="50dp"
-        android:background="@drawable/ic_add_circle_outline_black_24dp"
-        android:button="@drawable/ic_add_circle_outline_black_24dp"
+        android:drawableEnd="@drawable/ic_add_circle_outline_black_24dp"
+        android:padding="16dp"
 
-        android:padding="16dp" />
+        android:text="Add" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
@@ -67,4 +69,25 @@
         android:layout_marginTop="173dp"
         android:layout_marginEnd="141dp"
         android:layout_marginBottom="214dp" />
+
+    <Button
+        android:id="@+id/btnfinish"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+
+
+        android:layout_alignEnd="@id/btnadd"
+
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="230dp"
+
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="87dp"
+        android:background="@drawable/corneredblue"
+        android:drawableEnd="@drawable/ic_check_box_black_24dp"
+        android:padding="16dp"
+        android:text="Finish" />
+
 </RelativeLayout>

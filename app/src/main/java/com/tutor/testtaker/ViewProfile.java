@@ -30,6 +30,7 @@ public class ViewProfile extends AppCompatActivity {
       private TextView name;
       private TextView email;
       private  TextView id;
+      private  TextView institution;
 
       private UserData userData;
 
@@ -41,6 +42,7 @@ public class ViewProfile extends AppCompatActivity {
         name=findViewById(R.id.textView1);
         email=findViewById(R.id.textView2);
         id=findViewById(R.id.textView3);
+        institution=findViewById(R.id.textView4);
         userData= new UserData(this);
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,9 +63,10 @@ public class ViewProfile extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: started");
                 try {
-                    name.setText(response.getString("username"));
-                    email.setText(response.getString("email"));
-                    id.setText(response.getString("id"));
+                    name.setText("User Name: "+response.getString("username"));
+                    email.setText("Email: "+response.getString("email"));
+                    id.setText("ID: "+response.getString("id"));
+                    institution.setText("Instititution: "+response.getString("institution"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
