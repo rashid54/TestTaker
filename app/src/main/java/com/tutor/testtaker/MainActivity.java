@@ -7,49 +7,62 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import static com.tutor.testtaker.R.anim.bottom_animation;
 
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private CountDownTimer Timer;
+    private static int SPLASH_SCREEN = 5000;
+    ImageView image;
+    TextView logo, slogan;
+    android.view.animation.Animation topAnim;
+    android.view.animation.Animation bottomAnim;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
         setContentView(R.layout.activity_main);
+        image = findViewById(R.id.imageView);
+        logo = findViewById(R.id.textView5);
+        slogan = findViewById(R.id.textView6);
+
+
+        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+        bottomAnim= AnimationUtils.loadAnimation(this, bottom_animation);
+
+
+        image.setAnimation(topAnim);
+        logo.setAnimation(bottomAnim);
+        slogan.setAnimation(bottomAnim);
 
 
 
-
-
-        Timer = new CountDownTimer(1500,1000) {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void onTick(long millisUntilFinished) {
-                Log.d(TAG, "onTick: running1");
-
-                Log.d(TAG, "onTick: running ended");
-            }
-
-            @Override
-            public void onFinish() {
-
+            public void run() {
                 Intent intent = new Intent(MainActivity.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-
-
                 startActivity(intent);
+                finish();
 
             }
-        };
-        Timer.start();
+        }, SPLASH_SCREEN);
     }
 
 
