@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView"
@@ -15,6 +16,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:transitionName="image"
         android:src="@drawable/title_anime_top"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +31,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/arbutus"
         android:text="TT"
+        android:transitionName="textview5"
         android:textAlignment="center"
         android:textColor="#A51EA5"
         android:textSize="70sp"
