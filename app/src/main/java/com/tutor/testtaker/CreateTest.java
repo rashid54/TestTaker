@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -63,11 +64,19 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
             }
         });
 
+        btnFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //todo resolve 5 into duration and exit to another activity
+                postTestApi(testname.getText().toString(),5,quesIDlist);
+            }
+        });
     }
 
     private void initviews(){
         testname= findViewById(R.id.eN5);
         btnAddQuestion= findViewById(R.id.btnadd);
+        btnFinish= findViewById(R.id.btnfinish);
         recyclerView= findViewById(R.id.recview);
 
         queslist= new ArrayList<>();
@@ -100,11 +109,15 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: started");
                 Toast.makeText(CreateTest.this, "Test Created Successfully", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(CreateTest.this, StartTestActivity.class);
+                startActivity(intent);
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "onErrorResponse: started");
+                Toast.makeText(CreateTest.this, "Test couldn't be created", Toast.LENGTH_SHORT).show();
+
             }
         }){
             @Override
