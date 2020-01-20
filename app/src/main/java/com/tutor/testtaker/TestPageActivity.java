@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -15,12 +14,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Time;
 import java.util.ArrayList;
 
 public class TestPageActivity extends AppCompatActivity {
 
-    long time;
+    long duration;
     ArrayList<Ques> quesList;
 
     RecyclerView recview;
@@ -59,20 +57,20 @@ public class TestPageActivity extends AppCompatActivity {
     }
 
     public void init(){
-        time=16;
+        duration =16;
         quesList=new ArrayList<>();
         txtTestName=findViewById(R.id.txtTestName);
         btnFinish=findViewById(R.id.btnFinish);
         recview=findViewById(R.id.recvQuestions);
         timerbar=findViewById(R.id.timerBar);
         txttimer=findViewById(R.id.txttimer);
-        timerbar.setMax((int) time);
-        timerbar.setProgress((int) time);
-        timer= new CountDownTimer(time*1000,1000) {
+        timerbar.setMax((int) duration);
+        timerbar.setProgress((int) duration);
+        timer= new CountDownTimer(duration *1000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 timerbar.setProgress((int) (millisUntilFinished/1000));
-                String str=String.format("%02d:%02d / %02d:%02d",millisUntilFinished/60000,(millisUntilFinished/1000)%60,time/60,time%60);
+                String str=String.format("%02d:%02d / %02d:%02d",millisUntilFinished/60000,(millisUntilFinished/1000)%60, duration /60, duration %60);
                 txttimer.setText(str);
             }
 
@@ -109,7 +107,7 @@ public class TestPageActivity extends AppCompatActivity {
         Bundle bundleResult=new Bundle();
         bundleResult.putString(getString(R.string.testName),txtTestName.getText().toString());
         bundleResult.putString(getString(R.string.testTopic),"The Topic of the test");
-        bundleResult.putString(getString(R.string.resultTime), String.valueOf(time));
+        bundleResult.putString(getString(R.string.resultTime), String.valueOf(duration));
         bundleResult.putString(getString(R.string.totalQues), String.valueOf(quesList.size()));
         bundleResult.putString(getString(R.string.testScore), String.valueOf(Test.totalCorrectAns(quesList)));
         bundleResult.putParcelableArrayList(getString(R.string.quesList),quesList);

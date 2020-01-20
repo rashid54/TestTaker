@@ -33,7 +33,7 @@ public class resultPageActivity extends AppCompatActivity {
 
             txtTestName.setText(resultBundle.getString(getString(R.string.testName),"Test name not found"));
             txtTestTopic.setText("Topic: "+resultBundle.getString(getString(R.string.testTopic),"topic not found"));
-            txtTestTime.setText("Time: "+resultBundle.getString(getString(R.string.resultTime),"time not received"));
+            txtTestTime.setText("Time: "+resultBundle.getString(getString(R.string.resultTime),"duration not received"));
             txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
             txtQues.setText("Ques: "+resultBundle.getString(getString(R.string.totalQues),"not found"));
             quesList=resultBundle.getParcelableArrayList(getString(R.string.quesList));

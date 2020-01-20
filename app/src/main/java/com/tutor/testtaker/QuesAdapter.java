@@ -7,9 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,11 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
-
     private static final String TAG = "QuesAdapter";
+
     ArrayList<Ques> queslist;
+    ArrayList<String> givenAnslist;
     Context context;
-    boolean isResult;
 
     public QuesAdapter() {
     }
@@ -29,15 +27,18 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     public QuesAdapter(ArrayList<Ques> queslist, Context context) {
         this.queslist = queslist;
         this.context = context;
-        this.isResult=false;
+        this.givenAnslist = new ArrayList<>(queslist.size());
     }
 
-    public QuesAdapter(ArrayList<Ques> queslist, Context context,boolean isResult) {
+    public QuesAdapter(ArrayList<Ques> queslist, ArrayList<String> givenAnslist, Context context) {
         this.queslist = queslist;
+        this.givenAnslist = givenAnslist;
         this.context = context;
-        this.isResult=isResult;
     }
 
+    public QuesAdapter(Context context) {
+        this.context = context;
+    }
 
     @NonNull
     @Override
@@ -49,62 +50,44 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
-        // set question and answers texts
-        holder.txtQuestion.setText(queslist.get(position).getQuestion());
-        holder.rdobtnAns0.setText(queslist.get(position).getAns()[0]);
-        holder.rdobtnAns1.setText(queslist.get(position).getAns()[1]);
-        holder.rdobtnAns2.setText(queslist.get(position).getAns()[2]);
-        holder.rdobtnAns3.setText(queslist.get(position).getAns()[3]);
-
-        if(isResult)
-        {
-            for (int i = 0; i < holder.rdogrpAnswer.getChildCount(); i++) {
-                holder.rdogrpAnswer.getChildAt(i).setEnabled(false);
-                if(queslist.get(position).getAns()[i].equals(queslist.get(position).getAns_given()))
-                {
-                    holder.rdogrpAnswer.getChildAt(i).setEnabled(true);
-                    holder.rdogrpAnswer.check(holder.rdogrpAnswer.getChildAt(i).getId());
-                }
-                if(queslist.get(position).isCorrect())
-                {
-
-                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.light_green));
-
-                }
-                else{
-                    holder.rdogrpAnswer.getChildAt(i).setBackgroundColor(context.getResources().getColor(R.color.red));
+        initviews(holder,position);
+        holder.rdogrpAnswer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.rdobtnAns0:
+                        givenAnslist.set(position,queslist.get(position).getOpt1());
+                        break;
+                    case R.id.rdobtnAns1:
+                        givenAnslist.set(position,queslist.get(position).getOpt2());
+                        break;
+                    case R.id.rdobtnAns2:
+                        givenAnslist.set(position,queslist.get(position).getOpt3());
+                        break;
+                    case R.id.rdobtnAns3:
+                        givenAnslist.set(position,queslist.get(position).getOpt4());
+                        break;
+                    default:
+                        givenAnslist.set(position,null);
+                        break;
                 }
             }
-        }
-        else{
-            holder.rdogrpAnswer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    switch (checkedId){
-                        case R.id.rdobtnAns0:
-                            queslist.get(position).setAns_given(queslist.get(position).getAns()[0]);
-                            break;
-                        case R.id.rdobtnAns1:
-                            queslist.get(position).setAns_given(queslist.get(position).getAns()[1]);
-                            break;
-                        case R.id.rdobtnAns2:
-                            queslist.get(position).setAns_given(queslist.get(position).getAns()[2]);
-                            break;
-                        case R.id.rdobtnAns3:
-                            queslist.get(position).setAns_given(queslist.get(position).getAns()[3]);
-                            break;
-                        default:
-                            queslist.get(position).setAns_given(null);
-                            break;
-                    }
-                }
-            });
-        }
+        });
     }
 
     @Override
     public int getItemCount() {
         return queslist.size();
+    }
+
+    public void initviews(ViewHolder holder,int position){
+        // set question and answers texts
+        holder.txtQuestion.setText(queslist.get(position).getQuestion());
+        holder.rdobtnAns0.setText(queslist.get(position).getOpt1());
+        holder.rdobtnAns1.setText(queslist.get(position).getOpt2());
+        holder.rdobtnAns2.setText(queslist.get(position).getOpt3());
+        holder.rdobtnAns3.setText(queslist.get(position).getOpt4());
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -125,6 +108,16 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
 
     public void setQueslist(ArrayList<Ques> queslist) {
         this.queslist = queslist;
+        this.givenAnslist = new ArrayList<>(queslist.size());
         notifyDataSetChanged();
+    }
+
+    public ArrayList<String> getGivenAnslist() {
+        return givenAnslist;
+    }
+
+    public void setGivenAnslist(ArrayList<String> givenAnslist) {
+        this.givenAnslist = givenAnslist;
+        this.notifyDataSetChanged();
     }
 }
