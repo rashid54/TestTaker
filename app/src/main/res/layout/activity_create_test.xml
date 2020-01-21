@@ -32,7 +32,7 @@
 
 
         android:background="@drawable/round_cornered"
-        android:padding="10dp"
+        android:padding="15px"
 
         android:fontFamily="@font/denk_one"
         android:hint="     Enter the Test Name   "
@@ -55,7 +55,7 @@
         android:drawableEnd="@drawable/ic_add_circle_outline_black_24dp"
         android:padding="16dp"
 
-        android:text="Add" />
+        android:text="Add " />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
@@ -72,8 +72,8 @@
 
     <Button
         android:id="@+id/btnfinish"
-        android:layout_width="157dp"
-        android:layout_height="75dp"
+        android:layout_width="178dp"
+        android:layout_height="60dp"
 
 
         android:layout_alignEnd="@id/btnadd"
@@ -81,14 +81,14 @@
 
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="193dp"
+        android:layout_marginStart="172dp"
         android:layout_marginEnd="11dp"
 
-        android:layout_marginBottom="99dp"
+        android:layout_marginBottom="113dp"
         android:background="@drawable/cornerd_pink"
         android:drawableEnd="@drawable/ic_check_box_black_24dp"
         android:padding="16dp"
         android:text="Finish"
-        android:textSize="18dp" />
+        android:textSize="16dp" />
 
 </RelativeLayout>
