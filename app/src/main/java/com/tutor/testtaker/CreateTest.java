@@ -102,6 +102,7 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
             jsonObject.put("testname",testname);
             jsonObject.put("duration",duration);
             jsonObject.put("questions",quesidarray);
+            jsonObject.put("totalques",quesIDlist.size());
         } catch (JSONException e) {
             e.printStackTrace();
         }

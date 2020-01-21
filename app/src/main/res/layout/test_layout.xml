@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="10dp"
+    app:cardPreventCornerOverlap="true"
+    android:padding="8dp"
+    >
+
+    <RelativeLayout
+        android:id="@+id/rltestbody"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/txttestname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Testname"
+            android:textSize="18dp"
+            android:padding="6dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rlbodyleft"
+            android:layout_below="@id/txttestname"
+            android:layout_toLeftOf="@id/rlbodymid"
+            android:layout_alignParentLeft="true"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txttest_id"
+                android:text="Test ID"
+                android:padding="4dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtquestion_no"
+                android:text="Question No"
+                android:layout_below="@id/txttest_id"
+                android:padding="4dp"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rlbodymid"
+            android:layout_below="@id/txttestname"
+            android:layout_centerHorizontal="true"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rlbodyright"
+            android:layout_below="@id/txttestname"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/rlbodymid"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtcreated_by"
+                android:text="Created By"
+                android:padding="4dp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtduration"
+                android:text="Duration"
+                android:layout_below="@id/txtcreated_by"
+                android:padding="4dp"
+                />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

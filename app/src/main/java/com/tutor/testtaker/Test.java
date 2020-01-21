@@ -3,80 +3,82 @@ package com.tutor.testtaker;
 import java.util.ArrayList;
 
 public class Test {
-    private String testName;
-    private long testTime;
+    private String testname;
+    private long duration;
     private ArrayList<Ques> queslist;
-    private ArrayList<String> correctAnslist;
-    private int testId;
-//
-//    public Test(String testName, int testTime, ArrayList<Ques> queslist) {
-//        this.testName = testName;
-//        this.testTime = testTime;
-//        this.queslist = queslist;
-//        genCorrectAnslist();
-//        genId();
-//    }
-//
-//    public void genCorrectAnslist(){
-//        correctAnslist= new ArrayList<>();
-//        for(Ques q:queslist){
-//            correctAnslist.add(q.getAns_correct());
-//        }
-//    }
-//
-//    public void genId(){
-//        // Todo: The code to find the id value of the test
-//    }
-//
-//    public void setTestName(String testName) {
-//        this.testName = testName;
-//    }
-//
-//    public void setTestTime(int testTime) {
-//        this.testTime = testTime;
-//    }
-//
-//    public void setQueslist(ArrayList<Ques> queslist) {
-//        this.queslist = queslist;
-//    }
-//
-//    public String getTestName() {
-//        return testName;
-//    }
-//
-//    public long getTestTime() {
-//        return testTime;
-//    }
-//
-//    public ArrayList<Ques> getQueslist() {
-//        return queslist;
-//    }
-//
-//    public static long totalCorrectAns(ArrayList<Ques> queslist,ArrayList<String>selectedAnslist)
-//    {
-//        int sum=0;
-//        for(int i=0;i<queslist.size();i++)
-//        {
-//            if(queslist.get(i).getAns()==selectedAnslist.get(i)){
-//                sum++;
-//            }
-//        }
-//        return sum;
-//    }
-//
-//    public long totalCorrectAns()
-//    {
-//        int sum=0;
-//        for(Ques q:queslist)
-//        {
-//            if(q.getAns_correct()==q.getAns_given()){
-//                sum++;
-//                q.setCorrect(true);
-//            }
-//            else {
-//                q.setCorrect(false);
-//            }
-//        }
-//        return sum;
-//    }
+    private int totalques;
+    private int id;
+    private int user_profile;
+
+    public Test() {
+    }
+
+    public Test(String testname, long duration, ArrayList<Ques> queslist, int totalques, int id, int user_profile) {
+        this.testname = testname;
+        this.duration = duration;
+        this.queslist = queslist;
+        this.totalques = totalques;
+        this.id = id;
+        this.user_profile = user_profile;
+    }
+
+    public String getTestname() {
+        return testname;
+    }
+
+    public void setTestname(String testname) {
+        this.testname = testname;
+    }
+
+    public long getDuration() {
+        return duration;
+    }
+
+    public void setDuration(long duration) {
+        this.duration = duration;
+    }
+
+    public ArrayList<Ques> getQueslist() {
+        return queslist;
+    }
+
+    public void setQueslist(ArrayList<Ques> queslist) {
+        this.queslist = queslist;
+    }
+
+    public int getTotalques() {
+        return totalques;
+    }
+
+    public void setTotalques(int totalques) {
+        this.totalques = totalques;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getUser_profile() {
+        return user_profile;
+    }
+
+    public void setUser_profile(int user_profile) {
+        this.user_profile = user_profile;
+    }
+
+    @Override
+    public String toString() {
+        return "Test{" +
+                "testname='" + testname + '\'' +
+                ", duration=" + duration +
+                ", queslist=" + queslist +
+                ", totalques=" + totalques +
+                ", id=" + id +
+                ", user_profile=" + user_profile +
+                '}';
+    }
 }

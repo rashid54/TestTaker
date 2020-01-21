@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,10 +16,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class TestPageActivity extends AppCompatActivity {
+    private static final String TAG = "TestPageActivity";
 
+    int test_id;
     long duration;
     ArrayList<Ques> quesList;
 
@@ -36,7 +48,16 @@ public class TestPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test_page);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //todo set bundle
+        try {
+            Bundle bundle= getIntent().getBundleExtra("testing");
+            test_id= bundle.getInt("test_id");
+        }catch (NullPointerException e){
+            Log.d(TAG, "onCreate: null pointer exception in testPageActivity");
+        }
+
         init();
+        //initTestQuestions(test_id);
         initquestions();
 
         txtTestName.setText("The Name of the Test");
@@ -97,6 +118,26 @@ public class TestPageActivity extends AppCompatActivity {
         quesList.add(new Ques("What is the extention of c5 plusplus?",".cpp",".c++",".cplusplus",".cplus",".cpp"));
         quesList.add(new Ques("What is the extention of c6 plusplus?",".cpp",".c++",".cplusplus",".cplus",".cpp"));
 
+    }
+    public void initTestQuestions(int test_id){
+        String url="https://presslu1.pythonanywhere.com/api/gettestquestion/"+test_id;
+
+        StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "onResponse: started");
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<Ques>>() {
+                }.getType();
+                quesList = gson.fromJson(response, type);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse: started");
+                quesList= null;
+            }
+        });
     }
 
     @Override
