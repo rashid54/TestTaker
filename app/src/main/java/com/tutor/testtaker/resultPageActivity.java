@@ -35,13 +35,15 @@ public class resultPageActivity extends AppCompatActivity {
         try {
             resultBundle=getIntent().getBundleExtra(getString(R.string.resultBundle));
 
+            quesList=resultBundle.getParcelableArrayList(getString(R.string.quesList));
+            selectedAnslist= resultBundle.getStringArrayList(getString(R.string.selectedAnslist));
             txtTestName.setText(resultBundle.getString(getString(R.string.testName),"Test name not found"));
             txtTestTopic.setText("Topic: "+resultBundle.getString(getString(R.string.testTopic),"topic not found"));
             txtTestTime.setText("Time: "+resultBundle.getString(getString(R.string.resultTime),"duration not received"));
-            txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
+            //txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
+            txtTestScore.setText("SCORE:\n"+totalCorrectAns(quesList,selectedAnslist));
             txtTotalQues.setText("Ques: "+resultBundle.getString(getString(R.string.totalQues),"not found"));
-            quesList=resultBundle.getParcelableArrayList(getString(R.string.quesList));
-            selectedAnslist= resultBundle.getStringArrayList(getString(R.string.selectedAnslist));
+
         }catch (NullPointerException ne)
         {
             Log.d(TAG, "onCreate: Null resultbundle found in resultPage");
@@ -71,6 +73,18 @@ public class resultPageActivity extends AppCompatActivity {
         txtTotalQues =findViewById(R.id.txtQues);
         btnMainMenu=findViewById(R.id.btnMainMenu);
         recvQueslist=findViewById(R.id.recvQueslist);
+    }
+
+    public long totalCorrectAns(ArrayList<Ques> queslist,ArrayList<String>selectedAnslist)
+    {
+        int sum=0;
+        for(int i=0;i<queslist.size();i++)
+        {
+            if(queslist.get(i).getAns()==selectedAnslist.get(i)){
+                sum++;
+            }
+        }
+        return sum;
     }
 
     @Override

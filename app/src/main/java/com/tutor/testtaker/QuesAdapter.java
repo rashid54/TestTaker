@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     private static final String TAG = "QuesAdapter";
@@ -27,7 +28,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     public QuesAdapter(ArrayList<Ques> queslist, Context context) {
         this.queslist = queslist;
         this.context = context;
-        this.selectedAnslist = new ArrayList<>(queslist.size());
+        this.selectedAnslist = new ArrayList<>(Arrays.asList(new String[queslist.size()]));
     }
 
     public QuesAdapter(ArrayList<Ques> queslist, ArrayList<String> selectedAnslist, Context context) {
@@ -51,6 +52,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         initviews(holder,position);
+        Log.d(TAG, "onBindViewHolder: "+queslist.size()+" "+selectedAnslist.size());
         holder.rdogrpAnswer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -108,7 +110,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
 
     public void setQueslist(ArrayList<Ques> queslist) {
         this.queslist = queslist;
-        this.selectedAnslist = new ArrayList<>(queslist.size());
+        this.selectedAnslist = new ArrayList<>(Arrays.asList(new String[queslist.size()]));
         notifyDataSetChanged();
     }
 

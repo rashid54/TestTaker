@@ -15,7 +15,7 @@ public class editor {
         this.opt4 = opt4;
         this.ans = ans;
 
-        ResultQuesAdapter resultQuesAdapter= new ResultQuesAdapter();
+        //ResultQuesAdapter resultQuesAdapter= new ResultQuesAdapter();
 
     }
 
