@@ -8,4 +8,5 @@
     <string name="resultBundle">resultBundle</string>
     <string name="quesList">quesList</string>
     <string name="selectedAnslist">selectedAnslist</string>
+    <string name="test_id">test_id</string>
 </resources>

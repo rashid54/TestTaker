@@ -1,6 +1,7 @@
 package com.tutor.testtaker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,17 +46,18 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.txttestname.setText(testlist.get(position).getTestname());
-        holder.txttest_id.setText(testlist.get(position).getId());
-        holder.txtcreated_by.setText(testlist.get(position).getUser_profile());
-        holder.txtquestion_no.setText(testlist.get(position).getTotalques());
-        holder.txtduration.setText(String.valueOf(testlist.get(position).getDuration()));
+        holder.txttest_id.setText("ID: "+testlist.get(position).getId());
+        holder.txtcreated_by.setText("Creator ID: "+testlist.get(position).getUser_profile());
+        holder.txtquestion_no.setText("Question No: "+testlist.get(position).getTotalques());
+        holder.txtduration.setText("Duration: "+String.valueOf(testlist.get(position).getDuration()));
 
         holder.rlbody.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo define onclick actions
+                //todo modify onclick actions
+                startTest(testlist.get(position).getId());
             }
         });
 
@@ -84,6 +86,17 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
             txtduration= itemView.findViewById(R.id.txtduration);
             rlbody=itemView.findViewById(R.id.rltestbody);
         }
+    }
+    public void startTest(int test_id)
+    {
+        Intent intent= new Intent(context,TestPageActivity.class);
+        intent.putExtra(context.getString(R.string.test_id),test_id);
+        context.startActivity(intent);
+    }
+
+    public void setTestlist(ArrayList<Test> testlist){
+        this.testlist=testlist;
+        notifyDataSetChanged();
     }
 
 }

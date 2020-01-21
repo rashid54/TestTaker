@@ -50,8 +50,8 @@ public class TestPageActivity extends AppCompatActivity {
 
         //todo set bundle
         try {
-            Bundle bundle= getIntent().getBundleExtra("testing");
-            test_id= bundle.getInt("test_id");
+            Intent intent= getIntent();
+            test_id= intent.getIntExtra(getString(R.string.test_id),-1);
         }catch (NullPointerException e){
             Log.d(TAG, "onCreate: null pointer exception in testPageActivity");
         }

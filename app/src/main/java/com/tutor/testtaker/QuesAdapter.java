@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -96,6 +97,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
         TextView txtQuestion;
         RadioGroup rdogrpAnswer;
         RadioButton rdobtnAns0,rdobtnAns1,rdobtnAns2,rdobtnAns3;
+        RelativeLayout rlBody;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -105,6 +107,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
             rdobtnAns1=itemView.findViewById(R.id.rdobtnAns1);
             rdobtnAns2=itemView.findViewById(R.id.rdobtnAns2);
             rdobtnAns3=itemView.findViewById(R.id.rdobtnAns3);
+            rlBody=itemView.findViewById(R.id.rlbody);
         }
     }
 
