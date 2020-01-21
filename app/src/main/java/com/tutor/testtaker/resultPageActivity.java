@@ -16,16 +16,18 @@ import java.util.ArrayList;
 public class resultPageActivity extends AppCompatActivity {
     private static final String TAG = "resultPageActivity";
 
-    TextView txtTestName,txtTestTopic,txtTestTime,txtTestScore,txtQues;
+    TextView txtTestName,txtTestTopic,txtTestTime,txtTestScore, txtTotalQues;
     Button btnMainMenu;
+    ResultQuesAdapter resultQuesAdapter;
     RecyclerView recvQueslist;
     ArrayList<Ques> quesList;
+    ArrayList<String> selectedAnslist;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
-        init();
+        initviews();
 
         Bundle resultBundle;
         try {
@@ -35,8 +37,9 @@ public class resultPageActivity extends AppCompatActivity {
             txtTestTopic.setText("Topic: "+resultBundle.getString(getString(R.string.testTopic),"topic not found"));
             txtTestTime.setText("Time: "+resultBundle.getString(getString(R.string.resultTime),"duration not received"));
             txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
-            txtQues.setText("Ques: "+resultBundle.getString(getString(R.string.totalQues),"not found"));
+            txtTotalQues.setText("Ques: "+resultBundle.getString(getString(R.string.totalQues),"not found"));
             quesList=resultBundle.getParcelableArrayList(getString(R.string.quesList));
+            selectedAnslist= resultBundle.getStringArrayList(getString(R.string.selectedAnslist));
         }catch (NullPointerException ne)
         {
             Log.d(TAG, "onCreate: Null resultbundle found in resultPage");
@@ -52,17 +55,18 @@ public class resultPageActivity extends AppCompatActivity {
         });
 
         recvQueslist.setLayoutManager(new LinearLayoutManager(this));
-        QuesAdapter adapter=new QuesAdapter(this.quesList,this,true);
-        recvQueslist.setAdapter(adapter);
-        adapter.setQueslist(quesList);
+        resultQuesAdapter = new ResultQuesAdapter(quesList,selectedAnslist,this);
+        recvQueslist.setAdapter(resultQuesAdapter);
+        resultQuesAdapter.setQueslist(quesList);
+        resultQuesAdapter.setSelectedAnslist(selectedAnslist);
     }
 
-    public void init(){
+    public void initviews(){
         txtTestName=findViewById(R.id.txtTestName);
         txtTestTopic=findViewById(R.id.txtTestTopic);
         txtTestTime=findViewById(R.id.txtTestTime);
         txtTestScore=findViewById(R.id.txtTestScore);
-        txtQues=findViewById(R.id.txtQues);
+        txtTotalQues =findViewById(R.id.txtQues);
         btnMainMenu=findViewById(R.id.btnMainMenu);
         recvQueslist=findViewById(R.id.recvQueslist);
     }

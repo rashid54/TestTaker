@@ -18,7 +18,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     private static final String TAG = "QuesAdapter";
 
     ArrayList<Ques> queslist;
-    ArrayList<String> givenAnslist;
+    ArrayList<String> selectedAnslist;
     Context context;
 
     public QuesAdapter() {
@@ -27,12 +27,12 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
     public QuesAdapter(ArrayList<Ques> queslist, Context context) {
         this.queslist = queslist;
         this.context = context;
-        this.givenAnslist = new ArrayList<>(queslist.size());
+        this.selectedAnslist = new ArrayList<>(queslist.size());
     }
 
-    public QuesAdapter(ArrayList<Ques> queslist, ArrayList<String> givenAnslist, Context context) {
+    public QuesAdapter(ArrayList<Ques> queslist, ArrayList<String> selectedAnslist, Context context) {
         this.queslist = queslist;
-        this.givenAnslist = givenAnslist;
+        this.selectedAnslist = selectedAnslist;
         this.context = context;
     }
 
@@ -56,19 +56,19 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 switch (checkedId){
                     case R.id.rdobtnAns0:
-                        givenAnslist.set(position,queslist.get(position).getOpt1());
+                        selectedAnslist.set(position,queslist.get(position).getOpt1());
                         break;
                     case R.id.rdobtnAns1:
-                        givenAnslist.set(position,queslist.get(position).getOpt2());
+                        selectedAnslist.set(position,queslist.get(position).getOpt2());
                         break;
                     case R.id.rdobtnAns2:
-                        givenAnslist.set(position,queslist.get(position).getOpt3());
+                        selectedAnslist.set(position,queslist.get(position).getOpt3());
                         break;
                     case R.id.rdobtnAns3:
-                        givenAnslist.set(position,queslist.get(position).getOpt4());
+                        selectedAnslist.set(position,queslist.get(position).getOpt4());
                         break;
                     default:
-                        givenAnslist.set(position,null);
+                        selectedAnslist.set(position,null);
                         break;
                 }
             }
@@ -108,16 +108,16 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
 
     public void setQueslist(ArrayList<Ques> queslist) {
         this.queslist = queslist;
-        this.givenAnslist = new ArrayList<>(queslist.size());
+        this.selectedAnslist = new ArrayList<>(queslist.size());
         notifyDataSetChanged();
     }
 
-    public ArrayList<String> getGivenAnslist() {
-        return givenAnslist;
+    public ArrayList<String> getSelectedAnslist() {
+        return selectedAnslist;
     }
 
-    public void setGivenAnslist(ArrayList<String> givenAnslist) {
-        this.givenAnslist = givenAnslist;
+    public void setSelectedAnslist(ArrayList<String> selectedAnslist) {
+        this.selectedAnslist = selectedAnslist;
         this.notifyDataSetChanged();
     }
 }

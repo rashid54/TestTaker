@@ -6,21 +6,21 @@ public class Result {
     int id;
     int user_id;
     int test_id;
-    ArrayList<String> givenAnslist;
+    ArrayList<String> selectedAnslist;
     int score;
 
-    public Result(ArrayList<String> givenAnslist) {
-        this.givenAnslist = givenAnslist;
+    public Result(ArrayList<String> selectedAnslist) {
+        this.selectedAnslist = selectedAnslist;
     }
 
     public Result() {
 
     }
 
-    public Result(int user_id, int test_id, ArrayList<String> givenAnslist, int score) {
+    public Result(int user_id, int test_id, ArrayList<String> selectedAnslist, int score) {
         this.user_id = user_id;
         this.test_id = test_id;
-        this.givenAnslist = givenAnslist;
+        this.selectedAnslist = selectedAnslist;
         this.score = score;
     }
 
@@ -48,12 +48,12 @@ public class Result {
         this.test_id = test_id;
     }
 
-    public ArrayList<String> getGivenAnslist() {
-        return givenAnslist;
+    public ArrayList<String> getSelectedAnslist() {
+        return selectedAnslist;
     }
 
-    public void setGivenAnslist(ArrayList<String> givenAnslist) {
-        this.givenAnslist = givenAnslist;
+    public void setSelectedAnslist(ArrayList<String> selectedAnslist) {
+        this.selectedAnslist = selectedAnslist;
     }
 
     public int getScore() {
@@ -70,7 +70,7 @@ public class Result {
                 "id=" + id +
                 ", user_id=" + user_id +
                 ", test_id=" + test_id +
-                ", givenAnslist=" + givenAnslist +
+                ", selectedAnslist=" + selectedAnslist +
                 ", score=" + score +
                 '}';
     }

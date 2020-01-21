@@ -22,6 +22,7 @@ public class TestPageActivity extends AppCompatActivity {
     ArrayList<Ques> quesList;
 
     RecyclerView recview;
+    QuesAdapter quesAdapter;
     TextView txtTestName;
     Button btnFinish;
     TextView txttimer;
@@ -50,7 +51,7 @@ public class TestPageActivity extends AppCompatActivity {
         });
 
         recview.setLayoutManager(new LinearLayoutManager(this));
-        QuesAdapter quesAdapter=new QuesAdapter(this.quesList,this);
+        quesAdapter=new QuesAdapter(this.quesList,this);
         recview.setAdapter(quesAdapter);
         quesAdapter.setQueslist(quesList);
 
@@ -111,6 +112,7 @@ public class TestPageActivity extends AppCompatActivity {
         bundleResult.putString(getString(R.string.totalQues), String.valueOf(quesList.size()));
         bundleResult.putString(getString(R.string.testScore), String.valueOf(Test.totalCorrectAns(quesList)));
         bundleResult.putParcelableArrayList(getString(R.string.quesList),quesList);
+        bundleResult.putStringArrayList(getString(R.string.selectedAnslist),quesAdapter.getSelectedAnslist());
 
         return bundleResult;
     }
