@@ -14,6 +14,7 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TestListActivity"></activity>
         <activity android:name=".Animation" />
         <activity android:name=".ViewProfile" />
         <activity android:name=".CreateTest" />
