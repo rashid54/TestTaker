@@ -15,7 +15,7 @@
     <RelativeLayout
         android:backgroundTint="@color/dark_blue"
         android:background="@drawable/round_cornered"
-        android:id="@+id/rltestbody"
+        android:id="@+id/rlresultbody"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
