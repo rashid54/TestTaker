@@ -25,7 +25,7 @@
         android:textAlignment="center"
         android:textSize="40sp" />
 
-    <SearchView
+    <androidx.appcompat.widget.SearchView
         android:id="@+id/srcv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

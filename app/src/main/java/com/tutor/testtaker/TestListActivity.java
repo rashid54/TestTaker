@@ -76,7 +76,7 @@ public class TestListActivity extends AppCompatActivity {
     public void initviews(){
         btnCreateTest= findViewById(R.id.btnadd);
         txtTestList= findViewById(R.id.txtlist);
-        //todo searchView= findViewById(R.id.);
+        searchView= findViewById(R.id.srcv);
         recyclerView=findViewById(R.id.recview);
     }
 

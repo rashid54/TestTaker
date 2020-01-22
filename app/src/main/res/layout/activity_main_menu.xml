@@ -18,48 +18,31 @@
         android:contentDescription="logo"
 
 
-        android:src="@drawable/ic_ghgfh"
+        android:src="@drawable/icon"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintVertical_bias="0.105" />
 
     <Button
         android:id="@+id/btnTeach"
         android:layout_width="227dp"
         android:layout_height="50dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="228dp"
 
         android:background="@drawable/round_cornered"
-        android:padding="16dp"
         android:ems="10"
         android:fontFamily="@font/denk_one"
-        android:hint="Give Test"
-        android:textColorHint="@color/login_form_details"
+        android:hint="Test List"
         android:inputType="textPersonName"
+        android:padding="16dp"
+        android:textColorHint="@color/login_form_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnStudent"
-        android:layout_width="227dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="48dp"
-
-        android:background="@drawable/round_cornered"
-        android:ems="10"
-        android:fontFamily="@font/denk_one"
-        android:hint=" Take Test"
-
-        android:padding="16dp"
-        android:textColorHint="@color/login_form_details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnTeach" />
 
     <Button
         android:id="@+id/btnStat"
@@ -76,7 +59,7 @@
         android:textColorHint="@color/login_form_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnStudent" />
+        app:layout_constraintTop_toBottomOf="@id/btnTeach" />
 
 
     <Button
