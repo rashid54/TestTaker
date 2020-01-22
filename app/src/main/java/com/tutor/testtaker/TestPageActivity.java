@@ -17,9 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -54,6 +56,7 @@ public class TestPageActivity extends AppCompatActivity {
             Intent intent= getIntent();
             test_id= intent.getIntExtra(getString(R.string.test_id),-1);
             testname= intent.getStringExtra(getResources().getString(R.string.testname));
+            duration= intent.getLongExtra(getResources().getString(R.string.duration),-1);
         }catch (NullPointerException e){
             Log.d(TAG, "onCreate: null pointer exception in testPageActivity");
         }
@@ -77,11 +80,9 @@ public class TestPageActivity extends AppCompatActivity {
         recview.setLayoutManager(new LinearLayoutManager(this));
         quesAdapter=new QuesAdapter(this);
         initTestQuestions(test_id);
-        timer.start();
     }
 
     public void init(){
-        duration =16;
         quesList=new ArrayList<>();
         txtTestName=findViewById(R.id.txtTestName);
         btnFinish=findViewById(R.id.btnFinish);
@@ -131,6 +132,7 @@ public class TestPageActivity extends AppCompatActivity {
                 quesList = gson.fromJson(response, type);
                 recview.setAdapter(quesAdapter);
                 quesAdapter.setQueslist(quesList);
+                timer.start();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -139,6 +141,9 @@ public class TestPageActivity extends AppCompatActivity {
                 quesList= null;
             }
         });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+        requestQueue.start();
     }
 
     @Override

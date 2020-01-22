@@ -57,7 +57,7 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
             @Override
             public void onClick(View v) {
                 //todo modify onclick actions
-                startTest(testlist.get(position).getId(),testlist.get(position).getTestname());
+                startTest(testlist.get(position).getId(),testlist.get(position).getTestname(),testlist.get(position).getDuration());
             }
         });
 
@@ -87,11 +87,12 @@ public class TestAdapter extends RecyclerView.Adapter<TestAdapter.ViewHolder>{
             rlbody=itemView.findViewById(R.id.rltestbody);
         }
     }
-    public void startTest(int test_id,String testname)
+    public void startTest(int test_id,String testname,long duration)
     {
         Intent intent= new Intent(context,TestPageActivity.class);
         intent.putExtra(context.getString(R.string.test_id),test_id);
         intent.putExtra(context.getString((R.string.testname)),testname);
+        intent.putExtra(context.getString(R.string.duration),duration);
         context.startActivity(intent);
     }
 
