@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TestPageActivity">
+    tools:context=".TestPageActivity"
+    android:background="@drawable/ic_launcher_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +20,12 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Name of the test is written here"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+
             android:textStyle="bold"
+            android:fontFamily="@font/denk_one"
+
             android:id="@+id/txtTestName"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/btnFinish"

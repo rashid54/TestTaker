@@ -14,18 +14,17 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestListActivity"></activity>
+        <activity android:name=".TestListActivity" />
         <activity android:name=".Animation" />
         <activity android:name=".ViewProfile" />
         <activity android:name=".CreateTest" />
-        <activity android:name=".CreateQuestion" />
         <activity android:name=".SignUp">
             <intent-filter>
                 <action android:name="android.intent.action.SignUp" />
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
-        <activity android:name=".StartTestActivity" />
+        <activity android:name=".MainMenu" />
         <activity android:name=".resultPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.RESULT" />

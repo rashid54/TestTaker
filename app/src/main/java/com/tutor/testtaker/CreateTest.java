@@ -21,7 +21,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.JsonArray;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -160,7 +159,7 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: started");
                 Toast.makeText(CreateTest.this, "Test Created Successfully", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(CreateTest.this, StartTestActivity.class);
+                Intent intent = new Intent(CreateTest.this, MainMenu.class);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {

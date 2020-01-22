@@ -52,7 +52,7 @@ public class resultPageActivity extends AppCompatActivity {
         btnMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(resultPageActivity.this,StartTestActivity.class);
+                Intent intent=new Intent(resultPageActivity.this, MainMenu.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -89,7 +89,7 @@ public class resultPageActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(resultPageActivity.this,StartTestActivity.class);
+        Intent intent=new Intent(resultPageActivity.this, MainMenu.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }

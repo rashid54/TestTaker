@@ -22,8 +22,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StartTestActivity extends AppCompatActivity {
-    private static final String TAG = "StartTestActivity";
+public class MainMenu extends AppCompatActivity {
+    private static final String TAG = "MainMenu";
     Button btnStartTest;
     Button Teacher;
     Button Stat;
@@ -36,7 +36,7 @@ public class StartTestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start_test);
+        setContentView(R.layout.activity_main_menu);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Log.d(TAG, "onCreate: Started");
         Logout=findViewById(R.id.btnLogout);
@@ -48,7 +48,7 @@ public class StartTestActivity extends AppCompatActivity {
         Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartTestActivity.this, ViewProfile.class);
+                Intent intent = new Intent(MainMenu.this, ViewProfile.class);
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -58,7 +58,7 @@ public class StartTestActivity extends AppCompatActivity {
         Logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(StartTestActivity.this, Login.class);
+                Intent intent = new Intent(MainMenu.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 userData.setLoginStatus(false);
                 startActivity(intent);
@@ -68,15 +68,15 @@ public class StartTestActivity extends AppCompatActivity {
         btnStartTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(StartTestActivity.this,"Test Started",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(StartTestActivity.this,TestPageActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
+                Toast.makeText(MainMenu.this,"Test Started",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MainMenu.this,TestPageActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
         Stat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: started");
-                Intent intent= new Intent(StartTestActivity.this,TestListActivity.class);
+                Intent intent= new Intent(MainMenu.this,TestListActivity.class);
                 startActivity(intent);
             }
         });

@@ -155,11 +155,12 @@ public class TestPageActivity extends AppCompatActivity {
     public Bundle getResultBundle()
     {
         Bundle bundleResult=new Bundle();
-        bundleResult.putString(getString(R.string.testName),txtTestName.getText().toString());
+
         bundleResult.putString(getString(R.string.testTopic),"The Topic of the test");
+        bundleResult.putString(getString(R.string.testName),txtTestName.getText().toString());
         bundleResult.putString(getString(R.string.resultTime), String.valueOf(duration));
         bundleResult.putString(getString(R.string.totalQues), String.valueOf(quesList.size()));
-        //bundleResult.putString(getString(R.string.testScore), String.valueOf(Test.totalCorrectAns(quesList,quesAdapter.getSelectedAnslist())));
+       // bundleResult.putString(getString(R.string.testScore), String.valueOf(Test.totalCorrectAns(quesList,quesAdapter.getSelectedAnslist())));
         bundleResult.putParcelableArrayList(getString(R.string.quesList),quesList);
         bundleResult.putStringArrayList(getString(R.string.selectedAnslist),quesAdapter.getSelectedAnslist());
 

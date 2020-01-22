@@ -131,7 +131,7 @@ public class Login extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 userdata.setLoginStatus(true);
-                Intent intent = new Intent(Login.this, Animation.class);
+                Intent intent = new Intent(Login.this, MainMenu.class);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {

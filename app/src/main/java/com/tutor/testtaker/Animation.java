@@ -6,8 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
-import java.io.InterruptedIOException;
-
  public class Animation extends AppCompatActivity {
 
     @Override
@@ -24,7 +22,7 @@ import java.io.InterruptedIOException;
                     e.printStackTrace();
                 }
                 finally {
-                    Intent intent=new Intent(Animation.this,StartTestActivity.class);
+                    Intent intent=new Intent(Animation.this, MainMenu.class);
                     startActivity(intent);
                 }
             }

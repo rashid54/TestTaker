@@ -51,7 +51,7 @@ public class ViewProfile extends AppCompatActivity {
             public void onClick(View view) {
                 getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-                Intent intent = new Intent(ViewProfile.this, StartTestActivity.class);
+                Intent intent = new Intent(ViewProfile.this, MainMenu.class);
 
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);

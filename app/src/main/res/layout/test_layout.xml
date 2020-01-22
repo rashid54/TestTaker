@@ -13,7 +13,7 @@
     >
 
     <RelativeLayout
-        android:background="@drawable/ic_launcher_background"
+        android:background="@drawable/round_cornered"
         android:id="@+id/rltestbody"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

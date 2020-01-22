@@ -92,6 +92,7 @@
         android:layout_alignParentBottom="true"
         android:text="All Tests"
         android:textSize="18dp"
+        android:layout_marginBottom="0dp"
         android:drawableTop="@drawable/ic_list_black_24dp"
         android:background="@drawable/cornerd_pink"
         android:layout_toEndOf="@+id/txtlist"
@@ -105,7 +106,9 @@
 
         android:layout_marginStart="98dp"
         android:layout_marginTop="616dp"
-        android:layout_marginEnd="-87dp"
+        android:layout_marginEnd="-100dp"
+
+
         android:text="Created"
         android:textSize="18dp"
         android:drawableTop="@drawable/ic_border_color_black_24dp"

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".resultPageActivity">
+    tools:context=".resultPageActivity"
+    android:background="@drawable/ic_launcher_background">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -82,6 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/boxTestInfo"
         android:text="Main Menu"
+        android:background="@drawable/round_cornered"
         android:id="@+id/btnMainMenu"
         />
     <RelativeLayout
