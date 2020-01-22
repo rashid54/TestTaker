@@ -55,17 +55,29 @@ public class ListQuesAdapter extends QuesAdapter {
             holder.rdobtnAns0.setTextColor(context.getResources().getColor(R.color.green));
             holder.rdobtnAns0.setChecked(true);
         }
-        else if(queslist.get(position).getOpt2().equals(queslist.get(position).getAns())){
+        else{
+            holder.rdobtnAns0.setTextColor(context.getResources().getColor(R.color.red));
+        }
+        if(queslist.get(position).getOpt2().equals(queslist.get(position).getAns())){
             holder.rdobtnAns1.setTextColor(context.getResources().getColor(R.color.green));
             holder.rdobtnAns1.setChecked(true);
         }
-        else if(queslist.get(position).getOpt3().equals(queslist.get(position).getAns())){
+        else{
+            holder.rdobtnAns1.setTextColor(context.getResources().getColor(R.color.red));
+        }
+        if(queslist.get(position).getOpt3().equals(queslist.get(position).getAns())){
             holder.rdobtnAns2.setTextColor(context.getResources().getColor(R.color.green));
             holder.rdobtnAns2.setChecked(true);
         }
-        else if(queslist.get(position).getOpt4().equals(queslist.get(position).getAns())){
+        else{
+            holder.rdobtnAns2.setTextColor(context.getResources().getColor(R.color.red));
+        }
+        if(queslist.get(position).getOpt4().equals(queslist.get(position).getAns())){
             holder.rdobtnAns3.setTextColor(context.getResources().getColor(R.color.green));
             holder.rdobtnAns3.setChecked(true);
+        }
+        else{
+            holder.rdobtnAns3.setTextColor(context.getResources().getColor(R.color.red));
         }
     }
 }

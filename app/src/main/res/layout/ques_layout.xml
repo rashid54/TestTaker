@@ -24,6 +24,7 @@
             android:text="The question is written here"
             android:textStyle="bold|italic"
             android:layout_alignParentTop="true"
+            android:textSize="16dp"
             />
 
         <RadioGroup
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/rdogrpAnswer"
             android:layout_below="@id/txtquestion"
+            android:textSize="12dp"
             >
             <RadioButton
                 android:layout_width="match_parent"

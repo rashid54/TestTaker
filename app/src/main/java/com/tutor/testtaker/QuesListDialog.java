@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,9 +29,10 @@ import java.util.ArrayList;
 public class QuesListDialog extends DialogFragment implements ListQuesAdapter.AddQuestion {
     public static final String TAG = "QuesListDialog";
 
-    ArrayList<Ques> queslist;
-    RecyclerView recyclerView;
-    ListQuesAdapter listQuesAdapter;
+    private ArrayList<Ques> queslist;
+    private SearchView searchView;
+    private RecyclerView recyclerView;
+    private ListQuesAdapter listQuesAdapter;
 
     @NonNull
     @Override
@@ -41,15 +43,30 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
                 .setView(view);
 
         initviews(view);
-        initQueslist();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         listQuesAdapter= new ListQuesAdapter(getContext(),this);
+
+        initQueslist();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchQueslist(newText);
+                return false;
+            }
+        });
 
         return builder.create();
     }
 
     private void initviews(View view) {
+        searchView= view.findViewById(R.id.searchbox);
         recyclerView= view.findViewById(R.id.recview);
     }
 
@@ -61,6 +78,36 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
     public void initQueslist()
     {
         String url= "https://presslu1.pythonanywhere.com/api/question/";
+
+        StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "onResponse: started");
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<Ques>>() {
+                }.getType();
+                queslist = gson.fromJson(response, type);
+                recyclerView.setAdapter(listQuesAdapter);
+                listQuesAdapter.setQueslist(queslist);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse: started Failed to get TestList");
+                Toast.makeText(getContext(), "Failed to get TestList", Toast.LENGTH_SHORT).show();
+            }
+        });
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        requestQueue.start();
+    }
+    public void searchQueslist(String str){
+        String[] searchtxt= str.split("\\s+");
+        str="";
+        for(String st:searchtxt){
+            str=str+"+"+st;
+        }
+        String url= "https://presslu1.pythonanywhere.com/api/question/?search="+str;
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
