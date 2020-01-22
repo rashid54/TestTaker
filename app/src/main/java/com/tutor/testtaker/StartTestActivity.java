@@ -76,7 +76,7 @@ public class StartTestActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: started");
-                Intent intent= new Intent(StartTestActivity.this,CreateTest.class);
+                Intent intent= new Intent(StartTestActivity.this,TestListActivity.class);
                 startActivity(intent);
             }
         });

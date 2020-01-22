@@ -34,6 +34,7 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
     private static final String TAG = "CreateTest";
 
     private EditText testname;
+    private EditText duration;
     private Button btnAddQuestion;
     private Button btnFinish;
     private RecyclerView recyclerView;
@@ -70,13 +71,14 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
             @Override
             public void onClick(View v) {
                 //todo resolve 5 into duration and exit to another activity
-                postTestApi(testname.getText().toString(),5,quesIDlist);
+                postTestApi(testname.getText().toString(),Integer.parseInt(duration.getText().toString()),quesIDlist);
             }
         });
     }
 
     private void initviews(){
         testname= findViewById(R.id.eN5);
+        duration= findViewById(R.id.timeset);
         btnAddQuestion= findViewById(R.id.btnadd);
         btnFinish= findViewById(R.id.btnfinish);
         recyclerView= findViewById(R.id.recview);

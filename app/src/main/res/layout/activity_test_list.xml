@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login"
+    tools:context=".TestListActivity"
     android:orientation="vertical"
     android:background="@drawable/ic_launcher_background"
     android:padding="20dp">
@@ -58,16 +58,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
-        android:layout_width="191dp"
-        android:layout_height="344dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="133dp"
-        android:layout_marginEnd="209dp"
-        android:layout_marginBottom="294dp" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/txtlist"
+        
+        android:layout_margin="20dp"
+        />
 
     <Button
         android:id="@+id/btnstr"
@@ -90,12 +86,10 @@
         android:id="@+id/btnall"
         android:layout_width="117dp"
         android:layout_height="79dp"
-        android:layout_alignParentTop="true"
-
         android:layout_marginStart="-30dp"
         android:layout_marginTop="616dp"
         android:layout_marginEnd="39dp"
-        android:layout_toStartOf="@+id/btnadd"
+        android:layout_alignParentBottom="true"
         android:text="All Tests"
         android:textSize="18dp"
         android:drawableTop="@drawable/ic_list_black_24dp"

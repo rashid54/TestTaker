@@ -129,8 +129,8 @@
         android:layout_toEndOf="@+id/eN5"
         android:background="@drawable/round_cornered"
         android:fontFamily="@font/denk_one"
-        android:hint="  Enter time   "
-        android:inputType="textShortMessage"
+        android:hint="  Enter time"
+        android:inputType="number"
         android:padding="15px" />
 
 </RelativeLayout>

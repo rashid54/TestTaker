@@ -14,9 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -78,5 +80,8 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
                 Toast.makeText(getContext(), "Failed to get TestList", Toast.LENGTH_SHORT).show();
             }
         });
+        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
+        requestQueue.add(stringRequest);
+        requestQueue.start();
     }
 }

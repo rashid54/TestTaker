@@ -13,9 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -36,16 +38,16 @@ public class TestListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate: started");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_list);
 
         initviews();
-        initTestlist();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        testAdapter= new TestAdapter(testlist,this);
-        recyclerView.setAdapter(testAdapter);
-        testAdapter.setTestlist(testlist);
+        testAdapter= new TestAdapter(this);
+
+        initTestlist();
 
         btnCreateTest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,24 +59,27 @@ public class TestListActivity extends AppCompatActivity {
     }
 
     public void initviews(){
-        //todo initviews
-        //btnCreateTest= findViewById(R.id.);
-        //txtTestList= findViewById(R.id);
-        //recyclerView=findViewById(R.id.);
+        btnCreateTest= findViewById(R.id.btnadd);
+        txtTestList= findViewById(R.id.txtlist);
+        recyclerView=findViewById(R.id.recview);
     }
 
     public void initTestlist()
     {
+        Log.d(TAG, "initTestlist: started");
         String url= "https://presslu1.pythonanywhere.com/api/test/";
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "onResponse: started");
+                Log.d(TAG, "onResponse: started "+response);
                 Gson gson = new Gson();
                 Type type = new TypeToken<ArrayList<Test>>() {
                 }.getType();
                 testlist = gson.fromJson(response, type);
+
+                recyclerView.setAdapter(testAdapter);
+                testAdapter.setTestlist(testlist);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -83,5 +88,9 @@ public class TestListActivity extends AppCompatActivity {
                 Toast.makeText(TestListActivity.this, "Failed to get TestList", Toast.LENGTH_SHORT).show();
             }
         });
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+        requestQueue.start();
     }
 }
