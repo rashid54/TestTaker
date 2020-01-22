@@ -42,20 +42,20 @@
 
     <Button
         android:id="@+id/btnadd"
-        android:layout_width="103dp"
-        android:layout_height="52dp"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/eN5"
 
         android:layout_alignParentStart="true"
-        android:background="@drawable/corneredblue"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="259dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/corneredblue"
         android:drawableEnd="@drawable/ic_add_circle_outline_black_24dp"
         android:padding="16dp"
 
-        android:text="Add " />
+        android:text="Add question" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
@@ -65,15 +65,15 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="78dp"
-        android:layout_marginTop="173dp"
-        android:layout_marginEnd="141dp"
-        android:layout_marginBottom="214dp" />
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginEnd="183dp"
+        android:layout_marginBottom="233dp" />
 
     <Button
         android:id="@+id/btnfinish"
-        android:layout_width="178dp"
-        android:layout_height="60dp"
+        android:layout_width="191dp"
+        android:layout_height="57dp"
 
 
         android:layout_alignEnd="@id/btnadd"
@@ -81,14 +81,56 @@
 
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="172dp"
+        android:layout_marginStart="191dp"
         android:layout_marginEnd="11dp"
 
-        android:layout_marginBottom="113dp"
+        android:layout_marginBottom="116dp"
         android:background="@drawable/cornerd_pink"
         android:drawableEnd="@drawable/ic_check_box_black_24dp"
         android:padding="16dp"
         android:text="Finish"
         android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/btntime"
+        android:layout_width="144dp"
+        android:layout_height="74dp"
+
+
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+
+
+        android:layout_marginStart="252dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="15dp"
+
+        android:background="@drawable/corneredblue"
+        android:drawableEnd="@drawable/ic_timer_black_24dp"
+        android:padding="16dp"
+        android:text="Add time"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/timeset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="45dp"
+
+
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="9dp"
+        android:layout_toEndOf="@+id/eN5"
+        android:background="@drawable/round_cornered"
+        android:fontFamily="@font/denk_one"
+        android:hint="  Enter time   "
+        android:inputType="textShortMessage"
+        android:padding="15px" />
 
 </RelativeLayout>

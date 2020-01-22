@@ -30,26 +30,24 @@
         android:id="@+id/textView5"
         android:layout_width="208dp"
         android:layout_height="65dp"
-        android:transitionName="textview5"
-
-        android:layout_marginTop="28dp"
-
         android:fontFamily="@font/denk_one"
-        android:text="Login?"
 
+        android:text="Login?"
         android:textAlignment="center"
+
         android:textSize="35dp"
+        android:transitionName="textview5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
     <EditText
         android:id="@+id/username"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="227dp"
         android:layout_height="50dp"
-        android:layout_marginTop="272dp"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="240dp"
         android:background="@drawable/round_cornered"
         android:ems="10"
 
@@ -59,7 +57,7 @@
         android:padding="16dp"
         android:textColorHint="@color/login_form_details"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,7 +104,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/cornerd_pink"
         android:fontFamily="@font/denk_one"
 
@@ -114,7 +112,7 @@
         android:text="Login"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ePassword" />
 
@@ -129,10 +127,10 @@
         android:text="No of Attemps Remaining: "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintHorizontal_bias="0.604"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.088" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/txtLockTimer"
@@ -164,13 +162,13 @@
         android:layout_height="50dp"
         android:layout_margin="20dp"
         android:layout_marginTop="28dp"
-        android:background="@color/deep_blue"
+        android:background="@drawable/cornerd_pink"
 
 
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:fontFamily="@font/denk_one"
         android:includeFontPadding="true"
-        android:text="Not a member yet?"
+        android:text="New here? Join Now!"
 
         android:padding="16dp"
 

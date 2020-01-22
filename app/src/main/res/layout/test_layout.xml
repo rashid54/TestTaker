@@ -8,10 +8,12 @@
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp"
     app:cardPreventCornerOverlap="true"
+    android:background="@drawable/ic_launcher_background"
     android:padding="8dp"
     >
 
     <RelativeLayout
+        android:background="@drawable/ic_launcher_background"
         android:id="@+id/rltestbody"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
