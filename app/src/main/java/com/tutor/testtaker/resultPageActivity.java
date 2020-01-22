@@ -40,8 +40,8 @@ public class resultPageActivity extends AppCompatActivity {
             txtTestName.setText(resultBundle.getString(getString(R.string.testName),"Test name not found"));
             txtTestTopic.setText("Topic: "+resultBundle.getString(getString(R.string.testTopic),"topic not found"));
             txtTestTime.setText("Time: "+resultBundle.getString(getString(R.string.resultTime),"duration not received"));
-            //txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
-            txtTestScore.setText("SCORE:\n"+totalCorrectAns(quesList,selectedAnslist));
+            txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
+            //txtTestScore.setText("SCORE:\n"+totalCorrectAns(quesList,selectedAnslist));
             txtTotalQues.setText("Ques: "+resultBundle.getString(getString(R.string.totalQues),"not found"));
 
         }catch (NullPointerException ne)
@@ -80,7 +80,7 @@ public class resultPageActivity extends AppCompatActivity {
         int sum=0;
         for(int i=0;i<queslist.size();i++)
         {
-            if(queslist.get(i).getAns()==selectedAnslist.get(i)){
+            if(queslist.get(i).getAns().equals(selectedAnslist.get(i))){
                 sum++;
             }
         }

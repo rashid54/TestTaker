@@ -98,6 +98,7 @@ public class MainMenu extends AppCompatActivity {
                     userProfile.setId(response.getInt("id"));
                     userProfile.setIs_teacher(response.getBoolean("is_teacher"));
                     userData.setIsTeacher(response.getBoolean("is_teacher"));
+                    userData.setUser_id(response.getInt("id"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
