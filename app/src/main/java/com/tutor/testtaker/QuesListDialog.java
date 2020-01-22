@@ -77,6 +77,8 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
 
     public void initQueslist()
     {
+        Log.d(TAG, "initQueslist: started");
+
         String url= "https://presslu1.pythonanywhere.com/api/question/";
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -102,6 +104,8 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
         requestQueue.start();
     }
     public void searchQueslist(String str){
+        Log.d(TAG, "searchQueslist: started");
+
         String[] searchtxt= str.split("\\s+");
         str="";
         for(String st:searchtxt){
