@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     android.view.animation.Animation topAnim;
     android.view.animation.Animation bottomAnim;
 
+    Intent intent;
 
 
     @Override
@@ -53,12 +54,16 @@ public class MainActivity extends AppCompatActivity {
         logo.setAnimation(bottomAnim);
         slogan.setAnimation(bottomAnim);
 
+        intent = new Intent(MainActivity.this, Login.class);
 
+        UserData userData= new UserData(this);
+        if(userData.isLoginStatus()==true){
+            intent= new Intent(MainActivity.this,MainMenu.class);
+        }
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(MainActivity.this, Login.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 Pair[]  pairs = new Pair[2];
                 pairs[0] = new Pair<View,String>(image, "image");

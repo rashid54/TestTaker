@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatCheckBox;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -36,6 +38,7 @@ public class SignUp extends AppCompatActivity {
     private EditText institution;
     private TextView info;
     private Button login;
+    private AppCompatCheckBox checkBox;
 
     private  TextView SignUpMessage;
 
@@ -54,8 +57,7 @@ public class SignUp extends AppCompatActivity {
         info = findViewById(R.id.tvInfo);
         login = findViewById(R.id.btnLogin);
         SignUpMessage=findViewById(R.id.SignUpMsg);
-
-
+        checkBox= findViewById(R.id.checkbox);
 
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +77,14 @@ public class SignUp extends AppCompatActivity {
         signupData.put("password",password.getText().toString());
         signupData.put("institution",institution.getText().toString());
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(signupData), new Response.Listener<JSONObject>() {
+        JSONObject jsonData= null;
+        try {
+            jsonData = new JSONObject(signupData).put("is_teacher",checkBox.isChecked());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,jsonData, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: signupApi");

@@ -12,9 +12,11 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -81,7 +83,7 @@ public class MainMenu extends AppCompatActivity {
             }
         });
 
-        String url= "https://presslu1.pythonanywhere.com/api/getuser/";
+        String url= "https://presslu1.pythonanywhere.com/api/getid/";
         JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -94,6 +96,8 @@ public class MainMenu extends AppCompatActivity {
                 }
                 try {
                     userProfile.setId(response.getInt("id"));
+                    userProfile.setIs_teacher(response.getBoolean("is_teacher"));
+                    userData.setIsTeacher(response.getBoolean("is_teacher"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -112,5 +116,8 @@ public class MainMenu extends AppCompatActivity {
                 return data;
             }
         };
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(jsonObjectRequest);
+        requestQueue.start();
     }
 }

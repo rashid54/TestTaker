@@ -119,7 +119,7 @@ public class TestListActivity extends AppCompatActivity {
         for(String st:searchtxt){
             str=str+"+"+st;
         }
-        String url= "https://presslu1.pythonanywhere.com/api/test/"+str;
+        String url= "https://presslu1.pythonanywhere.com/api/test/?search="+str;
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override

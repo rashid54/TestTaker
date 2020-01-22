@@ -81,13 +81,13 @@ public class Login extends AppCompatActivity {
        // SignUpMessage.setText("Not a member yet?");
         SignUpMessage.setVisibility(View.VISIBLE);
         Info.setText("No of attempts remaining: 5");
-     SignUp.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
-             Intent intent = new Intent(Login.this, SignUp.class);
-             startActivity(intent);
-         }
-     }) ;
+         SignUp.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent = new Intent(Login.this, SignUp.class);
+                 startActivity(intent);
+             }
+         }) ;
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

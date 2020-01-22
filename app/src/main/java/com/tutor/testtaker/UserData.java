@@ -11,6 +11,7 @@ public class UserData {
 
     private Context context;
     private static boolean loginStatus=false;
+    private static boolean is_teacher =false;
 
     public UserData(Context context) {
         this.context = context;
@@ -18,7 +19,9 @@ public class UserData {
     }
 
     public boolean isLoginStatus() {
-        return loginStatus;
+        SharedPreferences sharedPreferences=context.getSharedPreferences(DATABASE_NAME,Context.MODE_PRIVATE);
+        UserData.loginStatus=sharedPreferences.getBoolean("loginStatus",false);
+        return UserData.loginStatus;
     }
 
     public void setLoginStatus(boolean loginStatus) {
@@ -55,5 +58,15 @@ public class UserData {
         return gson.fromJson(sharedPreferences.getString("user",null),UserProfile.class);
     }
 
+    public static boolean isIs_teacher() {
+        return is_teacher;
+    }
 
+    public void setIsTeacher(boolean isTeacher) {
+        UserData.is_teacher = isTeacher;
+        SharedPreferences sharedPreferences= context.getSharedPreferences(DATABASE_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putBoolean("is_teacher",isTeacher);
+        editor.commit();
+    }
 }
