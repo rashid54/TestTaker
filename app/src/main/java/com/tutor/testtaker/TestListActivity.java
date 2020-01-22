@@ -1,6 +1,7 @@
 package com.tutor.testtaker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +30,7 @@ public class TestListActivity extends AppCompatActivity {
 
     Button btnCreateTest;
     TextView txtTestList;
+    SearchView searchView;
 
     RecyclerView recyclerView;
     TestAdapter testAdapter;
@@ -56,11 +58,25 @@ public class TestListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchTestlist(newText);
+                return false;
+            }
+        });
     }
 
     public void initviews(){
         btnCreateTest= findViewById(R.id.btnadd);
         txtTestList= findViewById(R.id.txtlist);
+        //todo searchView= findViewById(R.id.);
         recyclerView=findViewById(R.id.recview);
     }
 
@@ -68,6 +84,42 @@ public class TestListActivity extends AppCompatActivity {
     {
         Log.d(TAG, "initTestlist: started");
         String url= "https://presslu1.pythonanywhere.com/api/test/";
+
+        StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d(TAG, "onResponse: started "+response);
+                Gson gson = new Gson();
+                Type type = new TypeToken<ArrayList<Test>>() {
+                }.getType();
+                testlist = gson.fromJson(response, type);
+
+                recyclerView.setAdapter(testAdapter);
+                testAdapter.setTestlist(testlist);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse: started Failed to get TestList");
+                Toast.makeText(TestListActivity.this, "Failed to get TestList", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        RequestQueue requestQueue= Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+        requestQueue.start();
+    }
+
+    public void searchTestlist(String str)
+    {
+        Log.d(TAG, "searchTestlist: started");
+
+        String[] searchtxt= str.split("\\s+");
+        str="";
+        for(String st:searchtxt){
+            str=str+"+"+st;
+        }
+        String url= "https://presslu1.pythonanywhere.com/api/test/"+str;
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
