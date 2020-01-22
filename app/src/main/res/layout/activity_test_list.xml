@@ -25,21 +25,20 @@
         android:textAlignment="center"
         android:textSize="40sp" />
 
-    <Button
-        android:id="@+id/btnsrc"
-        android:layout_width="105dp"
+    <SearchView
+        android:id="@+id/srcv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
 
-        android:textSize="18dp"
-        android:drawableTop="@drawable/ic_search_black_24dp"
-        android:background="@drawable/corneredblue"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="0dp"
+
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="23dp"
+
+
         android:layout_toStartOf="@+id/btnadd"
-        android:layout_toEndOf="@+id/txtlist"
-         />
+        android:background="@drawable/round_cornered"
+        android:layoutDirection="rtl" />
 
     <Button
         android:id="@+id/btnadd"
@@ -47,75 +46,22 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
+        android:layout_marginTop="75dp"
 
 
-        android:textSize="18dp"
-        android:drawableTop="@drawable/ic_add_black_24dp"
-        android:background="@drawable/corneredblue"
-        android:layout_marginTop="-10dp"
-        android:layout_marginEnd="-10dp"
-       />
+        android:layout_marginEnd="23dp"
+
+        android:background="@drawable/round_cornered"
+        android:drawableTop="@drawable/ic_add_black_24dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/txtlist"
-        
-        android:layout_margin="20dp"
-        />
 
-    <Button
-        android:id="@+id/btnstr"
-        android:layout_width="126dp"
-        android:layout_height="89dp"
-        android:layout_alignParentTop="true"
-
-        android:layout_marginStart="-177dp"
-        android:layout_marginTop="616dp"
-        android:layout_marginEnd="177dp"
-        android:layout_toStartOf="@+id/btnadd"
-        android:layout_toEndOf="@+id/txtlist"
-        android:text="Starred"
-        android:textSize="18dp"
-        android:drawableTop="@drawable/ic_star_black_24dp"
-        android:background="@drawable/cornerd_pink"
-         />
-
-    <Button
-        android:id="@+id/btnall"
-        android:layout_width="117dp"
-        android:layout_height="79dp"
-        android:layout_marginStart="-30dp"
-        android:layout_marginTop="616dp"
-        android:layout_marginEnd="39dp"
-        android:layout_alignParentBottom="true"
-        android:text="All Tests"
-        android:textSize="18dp"
-        android:layout_marginBottom="0dp"
-        android:drawableTop="@drawable/ic_list_black_24dp"
-        android:background="@drawable/cornerd_pink"
-        android:layout_toEndOf="@+id/txtlist"
-         />
-
-    <Button
-        android:id="@+id/btncrt"
-        android:layout_width="115dp"
-        android:layout_height="95dp"
-        android:layout_alignParentTop="true"
-
-        android:layout_marginStart="98dp"
-        android:layout_marginTop="616dp"
-        android:layout_marginEnd="-100dp"
-
-
-        android:text="Created"
-        android:textSize="18dp"
-        android:drawableTop="@drawable/ic_border_color_black_24dp"
-        android:background="@drawable/cornerd_pink"
-        android:layout_toStartOf="@+id/btnadd"
-        android:layout_toEndOf="@+id/txtlist"
-         />
+        android:layout_marginTop="104dp"
+        android:layout_marginBottom="20dp" />
 
 
 </RelativeLayout>
