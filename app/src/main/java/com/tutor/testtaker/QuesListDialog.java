@@ -44,9 +44,7 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
         initQueslist();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        listQuesAdapter= new ListQuesAdapter(queslist,getContext(),this);
-        recyclerView.setAdapter(listQuesAdapter);
-        listQuesAdapter.setQueslist(queslist);
+        listQuesAdapter= new ListQuesAdapter(getContext(),this);
 
         return builder.create();
     }
@@ -72,6 +70,8 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
                 Type type = new TypeToken<ArrayList<Ques>>() {
                 }.getType();
                 queslist = gson.fromJson(response, type);
+                recyclerView.setAdapter(listQuesAdapter);
+                listQuesAdapter.setQueslist(queslist);
             }
         }, new Response.ErrorListener() {
             @Override

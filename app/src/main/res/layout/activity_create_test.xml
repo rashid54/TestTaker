@@ -92,7 +92,7 @@
         android:textSize="16dp" />
 
     <Button
-        android:id="@+id/btntime"
+        android:id="@+id/btnqueslist"
         android:layout_width="144dp"
         android:layout_height="74dp"
 
@@ -110,7 +110,7 @@
         android:background="@drawable/corneredblue"
         android:drawableEnd="@drawable/ic_timer_black_24dp"
         android:padding="16dp"
-        android:text="Add time"
+        android:text="Question List"
         android:textSize="16dp" />
 
     <EditText

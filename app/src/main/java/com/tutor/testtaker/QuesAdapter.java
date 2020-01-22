@@ -90,6 +90,7 @@ public class QuesAdapter extends RecyclerView.Adapter<QuesAdapter.ViewHolder> {
         holder.rdobtnAns1.setText(queslist.get(position).getOpt2());
         holder.rdobtnAns2.setText(queslist.get(position).getOpt3());
         holder.rdobtnAns3.setText(queslist.get(position).getOpt4());
+        holder.rlBody.setBackgroundColor(context.getResources().getColor(R.color.light_cyan));
 
     }
 

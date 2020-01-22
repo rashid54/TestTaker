@@ -1,5 +1,6 @@
 package com.tutor.testtaker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,12 +31,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreateTest extends AppCompatActivity implements CreateQuestionDialog.CreateQuesion {
+public class CreateTest extends AppCompatActivity implements CreateQuestionDialog.CreateQuesion , ListQuesAdapter.AddQuestion {
     private static final String TAG = "CreateTest";
 
     private EditText testname;
     private EditText duration;
     private Button btnAddQuestion;
+    private Button btnQueslist;
     private Button btnFinish;
     private RecyclerView recyclerView;
 
@@ -54,7 +56,41 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
         initviews();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        quesAdapter= new QuesAdapter(this.queslist,this);
+        quesAdapter= new QuesAdapter(this.queslist,this){
+            @Override
+            public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+                initviews(holder,position);
+            }
+
+            @Override
+            public void initviews(ViewHolder holder, int position) {
+                super.initviews(holder, position);
+
+                holder.rdogrpAnswer.setBackgroundColor(context.getResources().getColor(R.color.light_cyan));
+                holder.rdogrpAnswer.setClickable(false);
+                holder.rdobtnAns0.setClickable(false);
+                holder.rdobtnAns1.setClickable(false);
+                holder.rdobtnAns2.setClickable(false);
+                holder.rdobtnAns3.setClickable(false);
+
+                if(queslist.get(position).getOpt1().equals(queslist.get(position).getAns())){
+                    holder.rdobtnAns0.setTextColor(context.getResources().getColor(R.color.green));
+                    holder.rdobtnAns0.setChecked(true);
+                }
+                else if(queslist.get(position).getOpt2().equals(queslist.get(position).getAns())){
+                    holder.rdobtnAns1.setTextColor(context.getResources().getColor(R.color.green));
+                    holder.rdobtnAns1.setChecked(true);
+                }
+                else if(queslist.get(position).getOpt3().equals(queslist.get(position).getAns())){
+                    holder.rdobtnAns2.setTextColor(context.getResources().getColor(R.color.green));
+                    holder.rdobtnAns2.setChecked(true);
+                }
+                else if(queslist.get(position).getOpt4().equals(queslist.get(position).getAns())){
+                    holder.rdobtnAns3.setTextColor(context.getResources().getColor(R.color.green));
+                    holder.rdobtnAns3.setChecked(true);
+                }
+            }
+        };
         recyclerView.setAdapter(quesAdapter);
         quesAdapter.setQueslist(queslist);
 
@@ -64,6 +100,15 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
                 Log.d(TAG, "onClick: started");
                 CreateQuestionDialog createQuestionDialog= new CreateQuestionDialog();
                 createQuestionDialog.show(getSupportFragmentManager(),"Create Question Dialog");
+            }
+        });
+
+        btnQueslist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onClick: started");
+                QuesListDialog quesListDialog= new QuesListDialog();
+                quesListDialog.show(getSupportFragmentManager(),"Queslist Dialog");
             }
         });
 
@@ -80,6 +125,7 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
         testname= findViewById(R.id.eN5);
         duration= findViewById(R.id.timeset);
         btnAddQuestion= findViewById(R.id.btnadd);
+        btnQueslist= findViewById(R.id.btnqueslist);
         btnFinish= findViewById(R.id.btnfinish);
         recyclerView= findViewById(R.id.recview);
 
@@ -135,5 +181,12 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(jsonObjectRequest);
         requestQueue.start();
+    }
+
+    @Override
+    public void addQues(Ques ques) {
+        quesIDlist.add(ques.getId());
+        queslist.add(ques);
+        quesAdapter.setQueslist(queslist);
     }
 }

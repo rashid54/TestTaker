@@ -60,7 +60,6 @@ public class ResultQuesAdapter extends QuesAdapter {
     public void initviews(ViewHolder holder, int position) {
         super.initviews(holder, position);
 
-        holder.rdogrpAnswer.setBackgroundColor(context.getResources().getColor(R.color.light_cyan));
         holder.rdobtnAns0.setEnabled(false);
         holder.rdobtnAns1.setEnabled(false);
         holder.rdobtnAns2.setEnabled(false);
