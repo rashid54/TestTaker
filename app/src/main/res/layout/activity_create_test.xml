@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CreateTest"
+    android:padding="10dp"
     android:background="@drawable/ic_launcher_background">
 
 
@@ -25,55 +26,54 @@
         android:padding="10dp"
         android:layout_alignParentTop="true"
         />
+
     <EditText
         android:id="@+id/eN5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
 
+        android:layout_below="@id/txttest"
+        android:layout_marginTop="0dp"
+
         android:background="@drawable/round_cornered"
-        android:padding="15px"
-
         android:fontFamily="@font/denk_one"
-        android:hint="     Enter the Test Name   "
 
+        android:hint="     Enter the Test Name   "
         android:inputType="textShortMessage"
-        android:layout_below="@id/txttest" />
+        android:padding="15px" />
 
     <Button
         android:id="@+id/btnadd"
-        android:layout_width="161dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/eN5"
-
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="232dp"
-        android:layout_marginTop="76dp"
-        android:layout_marginEnd="18dp"
+        android:layout_toRightOf="@id/mid"
         android:background="@drawable/corneredblue"
         android:drawableEnd="@drawable/ic_add_circle_outline_black_24dp"
-        android:padding="16dp"
-
-        android:text="Add question" />
+        android:fontFamily="@font/denk_one"
+        android:text="Add question"
+        android:layout_margin="12dp"
+        android:padding="12dp"
+        android:textColor="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview"
-        android:layout_width="191dp"
-        android:layout_height="344dp"
+        android:layout_width="236dp"
+        android:layout_height="288dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="154dp"
-        android:layout_marginEnd="183dp"
-        android:layout_marginBottom="233dp" />
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="232dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginBottom="211dp" />
 
     <Button
         android:id="@+id/btnfinish"
-        android:layout_width="191dp"
-        android:layout_height="57dp"
+        android:layout_width="173dp"
+        android:layout_height="77dp"
 
 
         android:layout_alignEnd="@id/btnadd"
@@ -81,55 +81,56 @@
 
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="191dp"
-        android:layout_marginEnd="11dp"
+        android:layout_marginStart="214dp"
+        android:layout_marginEnd="-35dp"
+        android:layout_marginBottom="115dp"
 
-        android:layout_marginBottom="116dp"
         android:background="@drawable/cornerd_pink"
         android:drawableEnd="@drawable/ic_check_box_black_24dp"
         android:padding="16dp"
         android:text="Finish"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/mid"
+        android:layout_below="@id/eN5"
+
+        />
     <Button
         android:id="@+id/btnqueslist"
-        android:layout_width="158dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-
-        android:layout_alignParentStart="true"
-
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-
-
-        android:layout_marginStart="238dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="15dp"
-
+        android:layout_below="@id/eN5"
+        android:layout_toLeftOf="@+id/mid"
         android:background="@drawable/corneredblue"
-        android:drawableEnd="@drawable/ic_timer_black_24dp"
-        android:padding="16dp"
-        android:text="Question List"
+        android:drawableEnd="@drawable/ic_list_black_24dp"
+        android:layout_margin="12dp"
+        android:fontFamily="@font/denk_one"
+
+        android:text="Question list"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 
     <EditText
         android:id="@+id/timeset"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
 
 
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="59dp"
-        android:layout_marginTop="45dp"
 
-
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="55dp"
         android:layout_toEndOf="@+id/eN5"
         android:background="@drawable/round_cornered"
         android:fontFamily="@font/denk_one"
-        android:hint="  Enter time"
+        android:hint="  Time     "
         android:inputType="number"
         android:padding="15px" />
 

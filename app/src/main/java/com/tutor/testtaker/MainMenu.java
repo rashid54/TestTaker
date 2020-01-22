@@ -25,7 +25,7 @@ import java.util.Map;
 public class MainMenu extends AppCompatActivity {
     private static final String TAG = "MainMenu";
     Button btnStartTest;
-    
+
     Button Stat;
     Button Logout;
     Button Profile;
