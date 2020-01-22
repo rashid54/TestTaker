@@ -2,11 +2,11 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="40dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
     app:cardPreventCornerOverlap="true"
     android:padding="5dp"
     >
@@ -14,10 +14,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
+        <androidx.appcompat.widget.SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/searchbox"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            app:queryHint="Search Question"
+            android:layoutDirection="rtl"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/recview"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/searchbox"
             />
     </RelativeLayout>
 
