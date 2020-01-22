@@ -32,6 +32,7 @@ public class TestPageActivity extends AppCompatActivity {
 
     int test_id;
     long duration;
+    String testname;
     ArrayList<Ques> quesList;
 
     RecyclerView recview;
@@ -52,15 +53,15 @@ public class TestPageActivity extends AppCompatActivity {
         try {
             Intent intent= getIntent();
             test_id= intent.getIntExtra(getString(R.string.test_id),-1);
+            testname= intent.getStringExtra(getResources().getString(R.string.testname));
         }catch (NullPointerException e){
             Log.d(TAG, "onCreate: null pointer exception in testPageActivity");
         }
 
         init();
-        //initTestQuestions(test_id);
-        initquestions();
+        //initquestions();
 
-        txtTestName.setText("The Name of the Test");
+        txtTestName.setText(testname);
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,10 +75,9 @@ public class TestPageActivity extends AppCompatActivity {
         });
 
         recview.setLayoutManager(new LinearLayoutManager(this));
-        quesAdapter=new QuesAdapter(this.quesList,this);
-        recview.setAdapter(quesAdapter);
-        quesAdapter.setQueslist(quesList);
-
+        quesAdapter=new QuesAdapter(this);
+        initTestQuestions(test_id);
+        timer.start();
     }
 
     public void init(){
@@ -108,7 +108,6 @@ public class TestPageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         };
-        timer.start();
     }
     public void initquestions(){
         quesList.add(new Ques("What is the extention of c1 plusplus?",".cpp",".c++",".cplusplus",".cplus",".cpp"));
@@ -130,6 +129,8 @@ public class TestPageActivity extends AppCompatActivity {
                 Type type = new TypeToken<ArrayList<Ques>>() {
                 }.getType();
                 quesList = gson.fromJson(response, type);
+                recview.setAdapter(quesAdapter);
+                quesAdapter.setQueslist(quesList);
             }
         }, new Response.ErrorListener() {
             @Override
