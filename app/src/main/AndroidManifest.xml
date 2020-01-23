@@ -14,8 +14,8 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NaviagationDrawer"></activity>
-
+        <activity android:name=".Credit"></activity>
+        <activity android:name=".NaviagationDrawer" />
         <activity android:name=".ResultList" />
         <activity android:name=".TestListActivity" />
         <activity android:name=".Animation" />

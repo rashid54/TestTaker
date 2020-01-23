@@ -63,9 +63,14 @@ public class NaviagationDrawer extends AppCompatActivity implements NavigationVi
             case R.id.profile:
                 intent = new Intent(NaviagationDrawer.this, ViewProfile.class);
             break;
-                case R.id.logout:
 
-                 intent = new Intent(NaviagationDrawer.this, Login.class);
+            case R.id.logout:
+
+                intent = new Intent(NaviagationDrawer.this, Login.class);
+                break;
+            case R.id.about:
+
+                intent = new Intent(NaviagationDrawer.this, Credit.class);
                 break;
         }
         startActivity(intent);
