@@ -68,7 +68,7 @@ public class NaviagationDrawer extends AppCompatActivity implements NavigationVi
 
                 intent = new Intent(NaviagationDrawer.this, Login.class);
                 break;
-            case R.id.about:
+            case R.id.credit:
 
                 intent = new Intent(NaviagationDrawer.this, Credit.class);
                 break;
