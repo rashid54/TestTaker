@@ -42,6 +42,7 @@ public class TestPageActivity extends AppCompatActivity {
     int test_id;
     long duration;
     String testname;
+    String username;
     int result_id;
     int score;
     ArrayList<Ques> quesList;
@@ -180,9 +181,12 @@ public class TestPageActivity extends AppCompatActivity {
 
         JSONObject jsonObject= new JSONObject();
         try {
+            username= userData.getUser().getUsername();
             score=totalCorrectAns(quesList,quesAdapter.getSelectedAnslist());
             jsonObject.put("test_id",this.test_id);
             jsonObject.put("score",score);
+            jsonObject.put("testname",testname);
+            jsonObject.put("username",username);
         } catch (JSONException e) {
             e.printStackTrace();
         }
