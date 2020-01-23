@@ -37,6 +37,7 @@ public class TestListActivity extends AppCompatActivity {
 
     ArrayList<Test> testlist;
 
+    UserData userData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,11 @@ public class TestListActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        userData= new UserData(this);
+        if (UserData.isIs_teacher()!=true){
+            btnCreateTest.setVisibility(View.GONE);
+        }
     }
 
     public void initviews(){

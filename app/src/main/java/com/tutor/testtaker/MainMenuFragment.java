@@ -75,7 +75,6 @@ public class MainMenuFragment extends Fragment{
         btnStartTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Test Started", Toast.LENGTH_SHORT).show();
                 Intent intent= new Intent(getActivity(),NaviagationDrawer.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -85,7 +84,7 @@ public class MainMenuFragment extends Fragment{
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: started");
-                Intent intent = new Intent(getActivity(), TestListActivity.class);
+                Intent intent = new Intent(getActivity(), ResultList.class);
                 startActivity(intent);
             }});
 
@@ -106,6 +105,7 @@ public class MainMenuFragment extends Fragment{
                         userProfile.setId(response.getInt("id"));
                         userProfile.setIs_teacher(response.getBoolean("is_teacher"));
                         userData.setIsTeacher(response.getBoolean("is_teacher"));
+                        userData.setUser_id(response.getInt("id"));
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
