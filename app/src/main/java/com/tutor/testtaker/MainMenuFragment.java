@@ -75,18 +75,12 @@ public class MainMenuFragment extends Fragment{
         btnStartTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(getActivity(),NaviagationDrawer.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-        Stat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 Log.d(TAG, "onClick: started");
                 Intent intent = new Intent(getActivity(), ResultList.class);
                 startActivity(intent);
-            }});
+            }
+        });
+
 
 
 
