@@ -35,6 +35,7 @@ public class SignUp extends AppCompatActivity {
     private EditText username;
     private EditText email;
     private EditText password;
+    private EditText confirmpassword;
     private EditText institution;
     private TextView info;
     private Button login;
@@ -58,15 +59,29 @@ public class SignUp extends AppCompatActivity {
         login = findViewById(R.id.btnLogin);
         SignUpMessage=findViewById(R.id.SignUpMsg);
         checkBox= findViewById(R.id.checkbox);
+        confirmpassword=findViewById(R.id.confirmPass);
+//        signUp.setOnClickListener(new View.OnClickListener() {
+//                                      @Override
+//                                      public void onClick(View view) {
+//
+//                                      }
+//                                  }
+       if(password.equals(confirmpassword)) {
 
-        signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signUp.setText("Signing Up ...");
-                signUp.setClickable(false);
-                signupApi();
-            }
-        });
+           Toast.makeText(password.getContext(), "!!!Password matched!!!", Toast.LENGTH_SHORT).show();
+
+       }
+       else {
+           Toast.makeText(password.getContext(), "!!!Password Doesn't matched!!!\nTry again", Toast.LENGTH_SHORT).show();
+       }
+                signUp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        signUp.setText("Signing Up ...");
+                        signUp.setClickable(false);
+                        signupApi();
+                    }
+                });
 
     }
 

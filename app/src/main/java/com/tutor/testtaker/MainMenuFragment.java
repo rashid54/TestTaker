@@ -85,7 +85,7 @@ public class MainMenuFragment extends Fragment{
 
         Testlist.setOnClickListener(new View.OnClickListener() {
             @Override
-            
+
             public void onClick(View view) {
                 Log.d(TAG, "onClick: started");
                 Intent intent = new Intent(getActivity(), TestListActivity.class);

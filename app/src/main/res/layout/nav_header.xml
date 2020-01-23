@@ -26,6 +26,9 @@
         android:layout_height="35dp"
         android:paddingTop="8dp"
         android:text=""
+        android:fontFamily="@font/denk_one"
+
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -34,6 +37,9 @@
         android:layout_height="35dp"
 
         android:paddingTop="8dp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/denk_one"
+  
         android:text="" />
 
 </LinearLayout>

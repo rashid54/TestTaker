@@ -38,7 +38,7 @@ public class resultPageActivity extends AppCompatActivity {
             quesList=resultBundle.getParcelableArrayList(getString(R.string.quesList));
             selectedAnslist= resultBundle.getStringArrayList(getString(R.string.selectedAnslist));
             txtTestName.setText(resultBundle.getString(getString(R.string.testName),"Test name not found"));
-            txtTestTopic.setText("Topic: "+resultBundle.getString(getString(R.string.testTopic),"topic not found"));
+           // txtTestTopic.setText("Topic: "+resultBundle.getString(getString(R.string.testTopic),"topic not found"));
             txtTestTime.setText("Time: "+resultBundle.getString(getString(R.string.resultTime),"duration not received"));
             txtTestScore.setText("SCORE:\n"+resultBundle.getString(getString(R.string.testScore),"score not found"));
             //txtTestScore.setText("SCORE:\n"+totalCorrectAns(quesList,selectedAnslist));
@@ -52,7 +52,7 @@ public class resultPageActivity extends AppCompatActivity {
         btnMainMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(resultPageActivity.this, MainMenu.class);
+                Intent intent=new Intent(resultPageActivity.this, NaviagationDrawer.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -67,7 +67,7 @@ public class resultPageActivity extends AppCompatActivity {
 
     public void initviews(){
         txtTestName=findViewById(R.id.txtTestName);
-        txtTestTopic=findViewById(R.id.txtTestTopic);
+       // txtTestTopic=findViewById(R.id.txtTestTopic);
         txtTestTime=findViewById(R.id.txtTestTime);
         txtTestScore=findViewById(R.id.txtTestScore);
         txtTotalQues =findViewById(R.id.txtQues);
@@ -89,7 +89,7 @@ public class resultPageActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(resultPageActivity.this, MainMenu.class);
+        Intent intent=new Intent(resultPageActivity.this, NaviagationDrawer.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
