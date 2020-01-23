@@ -29,7 +29,7 @@
         app:layout_constraintVertical_bias="0.105" />
 
     <Button
-        android:id="@+id/btnTeach"
+        android:id="@+id/testlist"
         android:layout_width="227dp"
         android:layout_height="50dp"
         android:layout_marginTop="228dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnStat"
+        android:id="@+id/stats"
         android:layout_width="227dp"
         android:layout_height="50dp"
         android:layout_marginTop="60dp"
@@ -60,7 +60,7 @@
         android:textColorHint="@color/login_form_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnTeach" />
+        app:layout_constraintTop_toBottomOf="@id/testlist" />
 
 
     <Button
@@ -78,7 +78,7 @@
         android:textColorHint="@color/login_form_details"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnStat" />
+        app:layout_constraintTop_toBottomOf="@id/stats" />
 
     <Button
         android:id="@+id/btnProfile"

@@ -26,9 +26,9 @@ import java.util.Map;
 
 public class MainMenu extends AppCompatActivity {
     private static final String TAG = "MainMenu";
-    Button btnStartTest;
+    Button Testlist;
 
-    Button Stat;
+    Button Stats;
     Button Logout;
     Button Profile;
 
@@ -43,7 +43,7 @@ public class MainMenu extends AppCompatActivity {
         Log.d(TAG, "onCreate: Started");
         Logout=findViewById(R.id.btnLogout);
         Profile=findViewById(R.id.btnProfile);
-        Stat = findViewById(R.id.btnTeach);
+        Stats = findViewById(R.id.stats);
 
         userData= new UserData(this);
 
@@ -66,14 +66,14 @@ public class MainMenu extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        btnStartTest=findViewById(R.id.btnStat);
-        btnStartTest.setOnClickListener(new View.OnClickListener() {
+        Testlist=findViewById(R.id.testlist);
+        Stats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainMenu.this,ResultList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
-        Stat.setOnClickListener(new View.OnClickListener() {
+        Testlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d(TAG, "onClick: started");

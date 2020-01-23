@@ -36,6 +36,7 @@ public class MainMenuFragment extends Fragment{
     Button Stat;
     Button Logout;
     Button Profile;
+    Button Testlist;
 
     UserData userData;
 
@@ -46,7 +47,9 @@ public class MainMenuFragment extends Fragment{
         final View view =inflater.inflate(R.layout.activity_main_menu,container,false);
         Logout=view.findViewById(R.id.btnLogout);
         Profile=view.findViewById(R.id.btnProfile);
-        Stat = view.findViewById(R.id.btnTeach);
+        Stat = view.findViewById(R.id.stats);
+        Testlist=view.findViewById(R.id.testlist);
+
 
 
         userData= new UserData(getContext());
@@ -71,15 +74,7 @@ public class MainMenuFragment extends Fragment{
                 startActivity(intent);
             }
         });
-        btnStartTest=view.findViewById(R.id.btnStat);
-        btnStartTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(getActivity(),NaviagationDrawer.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
+
         Stat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,6 +83,13 @@ public class MainMenuFragment extends Fragment{
                 startActivity(intent);
             }});
 
+        Testlist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "onClick: started");
+                Intent intent = new Intent(getActivity(), TestListActivity.class);
+                startActivity(intent);
+            }});
 
 
             String url = "https://presslu1.pythonanywhere.com/api/getid/";
