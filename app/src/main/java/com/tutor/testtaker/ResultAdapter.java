@@ -1,6 +1,7 @@
 package com.tutor.testtaker;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder>{
+    public static final String TAG="ResultAdapter";
     Context context;
     ArrayList<Result> resultlist;
 
@@ -34,10 +36,10 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        Log.d(TAG, "onBindViewHolder: "+resultlist.get(position).getTestname()+resultlist.get(position).getUsername()+resultlist.get(position).getScore());
         holder.txtTestname.setText(resultlist.get(position).getTestname());
         holder.txtUserName.setText(resultlist.get(position).getUsername());
-        holder.txtScore.setText(resultlist.get(position).getScore());
+        holder.txtScore.setText(String.valueOf(resultlist.get(position).getScore()));
 
         holder.txtTestname.setClickable(false);
         holder.txtUserName.setClickable(false);

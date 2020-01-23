@@ -70,8 +70,7 @@ public class MainMenu extends AppCompatActivity {
         btnStartTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainMenu.this,"Test Started",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainMenu.this,TestPageActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
+                startActivity(new Intent(MainMenu.this,ResultList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
         Stat.setOnClickListener(new View.OnClickListener() {
