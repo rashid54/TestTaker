@@ -66,17 +66,16 @@ public class SignUp extends AppCompatActivity {
 //
 //                                      }
 //                                  }
-       if(password.equals(confirmpassword)) {
 
-           Toast.makeText(password.getContext(), "!!!Password matched!!!", Toast.LENGTH_SHORT).show();
 
-       }
-       else {
-           Toast.makeText(password.getContext(), "!!!Password Doesn't matched!!!\nTry again", Toast.LENGTH_SHORT).show();
-       }
                 signUp.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        if(!password.equals(confirmpassword)) {
+
+                            Toast.makeText(password.getContext(), "!!!Password did not match!!!", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         signUp.setText("Signing Up ...");
                         signUp.setClickable(false);
                         signupApi();
@@ -113,7 +112,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "onErrorResponse: signupApi");
-                Toast.makeText(SignUp.this, "!!!SignUp failed!!!\nCan't connect to network", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignUp.this, "!!!SignUp failed!!!\nPlease enter correct information \nand check you internet connection", Toast.LENGTH_SHORT).show();
                 signUp.setText("SignUp");
                 signUp.setClickable(true);
             }

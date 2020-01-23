@@ -39,7 +39,7 @@
         android:paddingTop="8dp"
         android:textColor="@color/white"
         android:fontFamily="@font/denk_one"
-  
+
         android:text="" />
 
 </LinearLayout>

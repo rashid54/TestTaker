@@ -18,6 +18,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -151,6 +152,7 @@ public class Login extends AppCompatActivity {
                     lockTimer.start();
                     Log.d(TAG, "validate: timer started");
                 }
+                Toast.makeText(Login.this, "Failed to login", Toast.LENGTH_SHORT).show();
             }
         });
 
