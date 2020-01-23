@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".NaviagationDrawer"></activity>
-        
+
         <activity android:name=".ResultList" />
         <activity android:name=".TestListActivity" />
         <activity android:name=".Animation" />

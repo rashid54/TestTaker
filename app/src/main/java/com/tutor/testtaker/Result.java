@@ -9,6 +9,9 @@ public class Result {
     ArrayList<String> selectedAnslist;
     int score;
 
+    String testname;
+    String username;
+
     public Result(ArrayList<String> selectedAnslist) {
         this.selectedAnslist = selectedAnslist;
     }
@@ -62,6 +65,22 @@ public class Result {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public String getTestname() {
+        return testname;
+    }
+
+    public void setTestname(String testname) {
+        this.testname = testname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

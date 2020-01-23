@@ -16,17 +16,24 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class TestPageActivity extends AppCompatActivity {
@@ -35,7 +42,12 @@ public class TestPageActivity extends AppCompatActivity {
     int test_id;
     long duration;
     String testname;
+    String username;
+    int result_id;
+    int score;
     ArrayList<Ques> quesList;
+
+    UserData userData;
 
     RecyclerView recview;
     QuesAdapter quesAdapter;
@@ -50,6 +62,8 @@ public class TestPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_page);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        userData= new UserData(this);
 
         //todo set bundle
         try {
@@ -68,12 +82,7 @@ public class TestPageActivity extends AppCompatActivity {
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timer.cancel();
-                Intent intent=new Intent(TestPageActivity.this,resultPageActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra(getString(R.string.resultBundle),getResultBundle());
-                startActivity(intent);
-                //TODO: code for finishing the the test
+                finishTest();
             }
         });
 
@@ -102,11 +111,7 @@ public class TestPageActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 Toast.makeText(TestPageActivity.this,"!! The Time is UP !!",Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(TestPageActivity.this,resultPageActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                timer.cancel();
-                intent.putExtra(getString(R.string.resultBundle),getResultBundle());
-                startActivity(intent);
+                finishTest();
             }
         };
     }
@@ -141,6 +146,9 @@ public class TestPageActivity extends AppCompatActivity {
                 quesList= null;
             }
         });
+
+
+
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
         requestQueue.start();
@@ -160,10 +168,81 @@ public class TestPageActivity extends AppCompatActivity {
         bundleResult.putString(getString(R.string.testName),txtTestName.getText().toString());
         bundleResult.putString(getString(R.string.resultTime), String.valueOf(duration));
         bundleResult.putString(getString(R.string.totalQues), String.valueOf(quesList.size()));
-       // bundleResult.putString(getString(R.string.testScore), String.valueOf(Test.totalCorrectAns(quesList,quesAdapter.getSelectedAnslist())));
+        bundleResult.putString(getString(R.string.testScore), String.valueOf(score));
         bundleResult.putParcelableArrayList(getString(R.string.quesList),quesList);
         bundleResult.putStringArrayList(getString(R.string.selectedAnslist),quesAdapter.getSelectedAnslist());
 
         return bundleResult;
     }
+
+    public JsonObjectRequest postResult(){
+        Log.d(TAG, "postResult: started");
+        String url= "https://presslu1.pythonanywhere.com/api/testresult/";
+
+        JSONObject jsonObject= new JSONObject();
+        try {
+            username= userData.getUser().getUsername();
+            score=totalCorrectAns(quesList,quesAdapter.getSelectedAnslist());
+            jsonObject.put("test_id",this.test_id);
+            jsonObject.put("score",score);
+            jsonObject.put("testname",testname);
+            jsonObject.put("username",username);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.POST, url, jsonObject, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, "onResponse: started");
+                try {
+                    result_id= response.getInt("id");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                moveToNextPage();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse: started");
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> map= new HashMap<>();
+                map.put("Authorization","token "+userData.getAuthToken());
+                return map;
+            }
+        };
+
+        return jsonObjectRequest;
+
+    }
+
+    public void finishTest(){
+            RequestQueue requestQueue= Volley.newRequestQueue(this);
+            requestQueue.add(postResult());
+            requestQueue.start();
+    }
+
+    public int totalCorrectAns(ArrayList<Ques> quesList,ArrayList<String> selectedAns){
+        int sum=0;
+        for(int i=0;i<quesList.size();i++)
+        {
+            if(quesList.get(i).getAns().equals(selectedAns.get(i))){
+                sum++;
+            }
+        }
+        return sum;
+    }
+
+    public void moveToNextPage(){
+        timer.cancel();
+        Intent intent=new Intent(TestPageActivity.this,resultPageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(getString(R.string.resultBundle),getResultBundle());
+        startActivity(intent);
+    }
+
 }

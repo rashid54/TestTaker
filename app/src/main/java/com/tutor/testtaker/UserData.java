@@ -12,6 +12,7 @@ public class UserData {
     private Context context;
     private static boolean loginStatus=false;
     private static boolean is_teacher =false;
+    private static int user_id= -1;
 
     public UserData(Context context) {
         this.context = context;
@@ -67,6 +68,18 @@ public class UserData {
         SharedPreferences sharedPreferences= context.getSharedPreferences(DATABASE_NAME,Context.MODE_PRIVATE);
         SharedPreferences.Editor editor= sharedPreferences.edit();
         editor.putBoolean("is_teacher",isTeacher);
+        editor.commit();
+    }
+
+    public static int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        UserData.user_id = user_id;
+        SharedPreferences sharedPreferences= context.getSharedPreferences(DATABASE_NAME,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor= sharedPreferences.edit();
+        editor.putInt("user_id",user_id);
         editor.commit();
     }
 }

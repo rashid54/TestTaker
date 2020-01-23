@@ -70,8 +70,7 @@ public class MainMenu extends AppCompatActivity {
         btnStartTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainMenu.this,"Test Started",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MainMenu.this,NaviagationDrawer.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
+                startActivity(new Intent(MainMenu.this,ResultList.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
         Stat.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +97,7 @@ public class MainMenu extends AppCompatActivity {
                     userProfile.setId(response.getInt("id"));
                     userProfile.setIs_teacher(response.getBoolean("is_teacher"));
                     userData.setIsTeacher(response.getBoolean("is_teacher"));
+                    userData.setUser_id(response.getInt("id"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
