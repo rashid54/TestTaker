@@ -74,7 +74,9 @@ public class TestListActivity extends AppCompatActivity {
         });
 
         userData= new UserData(this);
-        if (userData.i)
+        if (UserData.isIs_teacher()!=true){
+            btnCreateTest.setVisibility(View.GONE);
+        }
     }
 
     public void initviews(){
