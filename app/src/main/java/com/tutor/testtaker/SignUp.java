@@ -62,6 +62,8 @@ public class SignUp extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                signUp.setText("Signing Up ...");
+                signUp.setClickable(false);
                 signupApi();
             }
         });
@@ -71,7 +73,7 @@ public class SignUp extends AppCompatActivity {
     private void signupApi(){
         String url = "https://presslu1.pythonanywhere.com/api/profile/";
 
-        Map<String,String> signupData = new HashMap<>();
+        final Map<String,String> signupData = new HashMap<>();
         signupData.put("username",username.getText().toString());
         signupData.put("email",email.getText().toString());
         signupData.put("password",password.getText().toString());
@@ -97,6 +99,8 @@ public class SignUp extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "onErrorResponse: signupApi");
                 Toast.makeText(SignUp.this, "!!!SignUp failed!!!\nCan't connect to network", Toast.LENGTH_SHORT).show();
+                signUp.setText("SignUp");
+                signUp.setClickable(true);
             }
         });
 

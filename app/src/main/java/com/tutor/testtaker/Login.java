@@ -91,6 +91,8 @@ public class Login extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Login.setText("Loading ...");
+                Login.setClickable(false);
                 validate(Name.getText().toString(), Password.getText().toString());
             }
         });
@@ -139,7 +141,8 @@ public class Login extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG, "onErrorResponse: validate started");
                 counter--;
-
+                Login.setText("Login");
+                Login.setClickable(true);
                 Info.setText("No of attempts remaining: " + counter);
 
                 if(counter == 0){
