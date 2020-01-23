@@ -130,7 +130,7 @@
         android:layout_toEndOf="@+id/eN5"
         android:background="@drawable/round_cornered"
         android:fontFamily="@font/denk_one"
-        android:hint="  Time     "
+        android:hint="  Time(sec)     "
         android:inputType="number"
         android:padding="15px" />
 

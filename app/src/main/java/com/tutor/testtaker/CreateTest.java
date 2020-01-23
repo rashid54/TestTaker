@@ -153,6 +153,9 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
     }
 
     public void postTestApi(String testname,int duration,ArrayList<Integer> quesIDlist){
+        if(duration<10){
+            duration=10;
+        }
         String url= "https://presslu1.pythonanywhere.com/api/test/";
         JSONArray quesidarray=new JSONArray(quesIDlist);
         JSONObject jsonObject=new JSONObject();
