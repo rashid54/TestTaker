@@ -11,4 +11,8 @@
     <string name="test_id">test_id</string>
     <string name="testname">testname</string>
     <string name="duration">duration</string>
+    
+    <string name="drawer_open">Open</string>
+
+    <string name="drawer_close">Close</string>
 </resources>

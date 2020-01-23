@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         UserData userData= new UserData(this);
         if(userData.isLoginStatus()==true){
-            intent= new Intent(MainActivity.this,MainMenu.class);
+            intent= new Intent(MainActivity.this,NaviagationDrawer.class);
         }
 
         new Handler().postDelayed(new Runnable() {
