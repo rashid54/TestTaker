@@ -134,8 +134,6 @@ public class Login extends AppCompatActivity {
                 }
                 userdata.setLoginStatus(true);
                 Intent intent = new Intent(Login.this, NaviagationDrawer.class);
-                Login.setText("Login");
-                Login.setClickable(true);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {

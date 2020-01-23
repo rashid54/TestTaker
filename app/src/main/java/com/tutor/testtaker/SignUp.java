@@ -92,8 +92,6 @@ public class SignUp extends AppCompatActivity {
                 Log.d(TAG, "onResponse: signupApi");
                 Toast.makeText(SignUp.this, "Signup Successful", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(SignUp.this, Login.class);
-                signUp.setText("SignUp");
-                signUp.setClickable(true);
                 startActivity(intent);
             }
         }, new Response.ErrorListener() {

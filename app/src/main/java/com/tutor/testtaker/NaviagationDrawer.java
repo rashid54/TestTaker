@@ -13,16 +13,21 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class NaviagationDrawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    TextView username;
+    TextView email;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     Intent intent;
+    UserData userData;
     //FragmentTransaction transaction;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,12 @@ public class NaviagationDrawer extends AppCompatActivity implements NavigationVi
         navigationView=findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        userData= new UserData(this);
+        View header= navigationView.getHeaderView(0);
+        username= (TextView) header.findViewById(R.id.text);
+        email= (TextView) header.findViewById(R.id.email);
+        username.setText(userData.getUser().getUsername());
+        email.setText(userData.getUser().getEmail());
 
         ActionBarDrawerToggle toggle=new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
