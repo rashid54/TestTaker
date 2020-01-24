@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CreateTest extends AppCompatActivity implements CreateQuestionDialog.CreateQuesion , ListQuesAdapter.AddQuestion {
+public class CreateTest extends AppCompatActivity implements CreateQuestionDialog.CreateQuesion , ListQuesAdapter.AddQuestion , DurationPickerDialog.DurationPickerInterface {
     private static final String TAG = "CreateTest";
 
     private EditText testname;
@@ -125,8 +125,8 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
         btnFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //todo resolve 5 into duration and exit to another activity
-                postTestApi(testname.getText().toString(),Integer.parseInt(duration.getText().toString()),quesIDlist);
+                DurationPickerDialog pickerDialog= new DurationPickerDialog();
+                pickerDialog.show(getSupportFragmentManager(),"Set Duration");
             }
         });
     }
@@ -201,5 +201,10 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
         quesIDlist.add(ques.getId());
         queslist.add(ques);
         quesAdapter.setQueslist(queslist);
+    }
+
+    @Override
+    public void ontimeset(int seconds) {
+        postTestApi(testname.getText().toString(),seconds,quesIDlist);
     }
 }
