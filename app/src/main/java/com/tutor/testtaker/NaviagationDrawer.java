@@ -78,6 +78,8 @@ public class NaviagationDrawer extends AppCompatActivity implements NavigationVi
             case R.id.logout:
 
                 intent = new Intent(NaviagationDrawer.this, Login.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                userData.setLoginStatus(false);
                 break;
             case R.id.credit:
 

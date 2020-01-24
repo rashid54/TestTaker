@@ -157,44 +157,22 @@
 
         />
 
-    <TextView
-        android:id="@+id/SignUpMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/cornerd_pink"
-
-
-        android:textColor="@color/black"
-        android:fontFamily="@font/denk_one"
-        android:includeFontPadding="true"
-        android:text="New here? Join Now!"
-
-        android:padding="16dp"
-
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtLockTimer"
-        android:textAlignment="center"
-
-        />
 
     <Button
         android:id="@+id/btnSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="184dp"
+        android:layout_height="78dp"
         android:layout_marginTop="52dp"
-        android:background="@drawable/cornered_red"
+        android:background="@drawable/cornerd_pink"
 
         android:fontFamily="@font/denk_one"
         android:padding="16dp"
-        android:text="Sign Up!!!"
+        android:text="New Here?  Join Now!"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SignUpMsg" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLockTimer"
+        app:layout_constraintVertical_bias="0.151" />
 </androidx.constraintlayout.widget.ConstraintLayout>

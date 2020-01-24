@@ -57,7 +57,7 @@ public class SignUp extends AppCompatActivity {
         password = findViewById(R.id.ePassword);
         info = findViewById(R.id.tvInfo);
         login = findViewById(R.id.btnLogin);
-        SignUpMessage=findViewById(R.id.SignUpMsg);
+
         checkBox= findViewById(R.id.checkbox);
         confirmpassword=findViewById(R.id.confirmPass);
 //        signUp.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +71,7 @@ public class SignUp extends AppCompatActivity {
                 signUp.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        if(!password.equals(confirmpassword)) {
+                        if(!password.getText().toString().equals(confirmpassword.getText().toString())) {
 
                             Toast.makeText(password.getContext(), "!!!Password did not match!!!", Toast.LENGTH_SHORT).show();
                             return;

@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
         Password = findViewById(R.id.ePassword);
         Info = findViewById(R.id.tvInfo);
         Login = findViewById(R.id.btnLogin);
-        SignUpMessage=findViewById(R.id.SignUpMsg);
+
         SignUp = findViewById(R.id.btnSignUp);
         showpassword=findViewById(R.id.checkbox);
 
@@ -80,8 +80,8 @@ public class Login extends AppCompatActivity {
         });
 
        // SignUpMessage.setText("Not a member yet?");
-        SignUpMessage.setVisibility(View.VISIBLE);
-        Info.setText("No of attempts remaining: 5");
+//        SignUpMessage.setVisibility(View.VISIBLE);
+//        Info.setText("No of attempts remaining: 5");
          SignUp.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
