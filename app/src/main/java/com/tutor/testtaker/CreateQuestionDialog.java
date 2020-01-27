@@ -16,12 +16,9 @@ import androidx.fragment.app.DialogFragment;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -97,7 +94,7 @@ public class CreateQuestionDialog extends DialogFragment {
     }
 
     public void postQuestion(String question,String opt1,String opt2,String opt3,String opt4,String ans){
-        String url= "https://presslu1.pythonanywhere.com/api/question/";
+        String url= Utils.getDOMAIN()+"question/";
         Map<String,String> data= new HashMap<>();
 
         data.put("question",question);
@@ -144,9 +141,7 @@ public class CreateQuestionDialog extends DialogFragment {
             }
         };
 
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-        requestQueue.add(jsonObjectRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
 
     }
 }

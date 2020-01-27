@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +14,9 @@ import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -95,7 +92,7 @@ public class MainMenuFragment extends Fragment{
 
 
 
-            String url = "https://presslu1.pythonanywhere.com/api/getid/";
+            String url = Utils.getDOMAIN()+"getid/";
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -129,9 +126,7 @@ public class MainMenuFragment extends Fragment{
                     return data;
                 }
             };
-            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-        requestQueue.add(jsonObjectRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(getContext()).addToRequestQueue(jsonObjectRequest);
         return view;
         }
     }

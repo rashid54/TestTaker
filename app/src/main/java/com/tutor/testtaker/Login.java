@@ -1,9 +1,10 @@
 
 package com.tutor.testtaker;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 
 import android.os.Bundle;
@@ -21,11 +22,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -48,6 +48,7 @@ public class Login extends AppCompatActivity {
     private Button SignUp;
     private CheckBox showpassword;
 
+    AlertDialog.Builder builder;
     private UserData userdata;
 
     @Override
@@ -56,6 +57,8 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
+        builder= new AlertDialog.Builder(this);
 
         Name= findViewById(R.id.username);
         Password = findViewById(R.id.ePassword);
@@ -81,7 +84,7 @@ public class Login extends AppCompatActivity {
 
        // SignUpMessage.setText("Not a member yet?");
 //        SignUpMessage.setVisibility(View.VISIBLE);
-//        Info.setText("No of attempts remaining: 5");
+         Info.setText("No of attempts remaining: 5");
          SignUp.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -118,7 +121,7 @@ public class Login extends AppCompatActivity {
 
     private void validate(String userName, String userPassword){
         Log.d(TAG, "validate: ");
-        String url = "https://presslu1.pythonanywhere.com/api/login/";
+        String url = Utils.getDOMAIN()+"login/";
 
         Map<String,String> logindata= new HashMap<>();
         logindata.put("username",userName);
@@ -129,13 +132,55 @@ public class Login extends AppCompatActivity {
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "onResponse: validate started");
                 try {
-                    userdata.setAuthToken(response.getString("token"));
+                    if(response.getBoolean("is_active")== false){
+                        final int id= response.getInt("id");
+                        builder.setTitle("Activate Account")
+                                .setMessage("Your account has not been activated.\n" +
+                                        "Please activate your account through the activation link sent to your Email.\n"+
+                                        "Didn't receive any Email,Resend?")
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                })
+                                .setPositiveButton("Resend", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Log.d(TAG, "onClick: started");
+
+                                        String url= Utils.getDOMAIN()+"confirm/"+id+"/";
+                                        StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                                            @Override
+                                            public void onResponse(String response) {
+                                                Log.d(TAG, "onResponse: started");
+                                                Toast.makeText(Login.this, "The confirmation Email has been sent.", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }, new Response.ErrorListener() {
+                                            @Override
+                                            public void onErrorResponse(VolleyError error) {
+                                                Log.d(TAG, "onErrorResponse: started");
+                                                Toast.makeText(Login.this, "Failed to send confirmation Email.", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                        VolleyPoint.getInstance(Login.this).addToRequestQueue(stringRequest);
+                                    }
+                                })
+                                .create().show();
+                    }
+                    else {
+                        userdata.setAuthToken(response.getString("token"));
+                        userdata.setLoginStatus(true);
+                        Intent intent = new Intent(Login.this, NaviagationDrawer.class);
+                        startActivity(intent);
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                userdata.setLoginStatus(true);
-                Intent intent = new Intent(Login.this, NaviagationDrawer.class);
-                startActivity(intent);
+                Login.setText("Login");
+                Login.setClickable(true);
+
             }
         }, new Response.ErrorListener() {
             @Override
@@ -156,9 +201,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(jsonObjectRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(jsonObjectRequest);
 
     }
 

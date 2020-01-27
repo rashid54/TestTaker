@@ -60,7 +60,7 @@ public class ViewProfile extends AppCompatActivity {
             }
         });
 
-        String url= "https://presslu1.pythonanywhere.com/api/getid/";
+        String url= Utils.getDOMAIN()+"getid/";
         JsonObjectRequest jsonObjectRequest= new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
@@ -88,8 +88,7 @@ public class ViewProfile extends AppCompatActivity {
                 return data;
             }
         };
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(jsonObjectRequest);
-        requestQueue.start();
+
+        VolleyPoint.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 }

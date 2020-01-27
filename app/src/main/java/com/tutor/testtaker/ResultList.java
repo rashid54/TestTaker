@@ -12,11 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -69,7 +67,7 @@ public class ResultList extends AppCompatActivity {
         for(String st:searchtxt){
             str=str+"+"+st;
         }
-        String url= "https://presslu1.pythonanywhere.com/api/testresult/?search="+str;
+        String url= Utils.getDOMAIN()+"testresult/?search="+str;
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -91,8 +89,6 @@ public class ResultList extends AppCompatActivity {
             }
         });
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(stringRequest);
     }
 }

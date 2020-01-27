@@ -15,11 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -79,7 +77,7 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
     {
         Log.d(TAG, "initQueslist: started");
 
-        String url= "https://presslu1.pythonanywhere.com/api/question/";
+        String url= Utils.getDOMAIN()+"question/";
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -99,9 +97,7 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
                 Toast.makeText(getContext(), "Failed to get TestList", Toast.LENGTH_SHORT).show();
             }
         });
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
     public void searchQueslist(String str){
         Log.d(TAG, "searchQueslist: started");
@@ -111,7 +107,7 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
         for(String st:searchtxt){
             str=str+"+"+st;
         }
-        String url= "https://presslu1.pythonanywhere.com/api/question/?search="+str;
+        String url= Utils.getDOMAIN()+"question/?search="+str;
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -131,8 +127,6 @@ public class QuesListDialog extends DialogFragment implements ListQuesAdapter.Ad
                 Toast.makeText(getContext(), "Failed to get TestList", Toast.LENGTH_SHORT).show();
             }
         });
-        RequestQueue requestQueue= Volley.newRequestQueue(getContext());
-        requestQueue.add(stringRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(getContext()).addToRequestQueue(stringRequest);
     }
 }

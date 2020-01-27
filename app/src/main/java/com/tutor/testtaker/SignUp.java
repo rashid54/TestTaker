@@ -15,11 +15,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatCheckBox;
 
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -85,7 +83,7 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void signupApi(){
-        String url = "https://presslu1.pythonanywhere.com/api/profile/";
+        String url = Utils.getDOMAIN()+"profile/";
 
         final Map<String,String> signupData = new HashMap<>();
         signupData.put("username",username.getText().toString());
@@ -111,15 +109,14 @@ public class SignUp extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.d(TAG, "onErrorResponse: signupApi");
+                Log.d(TAG, "onErrorResponse: signupApi"+error);
+                error.printStackTrace();
                 Toast.makeText(SignUp.this, "!!!SignUp failed!!!\nPlease enter correct information \nand check you internet connection", Toast.LENGTH_SHORT).show();
                 signUp.setText("SignUp");
                 signUp.setClickable(true);
             }
         });
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(jsonObjectRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 }

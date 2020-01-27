@@ -125,7 +125,7 @@ public class TestPageActivity extends AppCompatActivity {
 
     }
     public void initTestQuestions(int test_id){
-        String url="https://presslu1.pythonanywhere.com/api/gettestquestion/"+test_id;
+        String url=Utils.getDOMAIN()+"gettestquestion/"+test_id;
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -147,11 +147,7 @@ public class TestPageActivity extends AppCompatActivity {
             }
         });
 
-
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     @Override
@@ -177,7 +173,7 @@ public class TestPageActivity extends AppCompatActivity {
 
     public JsonObjectRequest postResult(){
         Log.d(TAG, "postResult: started");
-        String url= "https://presslu1.pythonanywhere.com/api/testresult/";
+        String url= Utils.getDOMAIN()+"testresult/";
 
         JSONObject jsonObject= new JSONObject();
         try {
@@ -221,9 +217,7 @@ public class TestPageActivity extends AppCompatActivity {
     }
 
     public void finishTest(){
-            RequestQueue requestQueue= Volley.newRequestQueue(this);
-            requestQueue.add(postResult());
-            requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(postResult());
     }
 
     public int totalCorrectAns(ArrayList<Ques> quesList,ArrayList<String> selectedAns){

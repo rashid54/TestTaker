@@ -10,6 +10,11 @@ import androidx.annotation.RequiresApi;
 
 public class Utils {
     private static final String TAG = "Utils";
+    private static String DOMAIN= "https://truetest.herokuapp.com/api/";
+
+    public static String getDOMAIN() {
+        return DOMAIN;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public static boolean isOnline(Context context) {

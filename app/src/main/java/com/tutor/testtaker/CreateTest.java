@@ -16,11 +16,9 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -156,7 +154,7 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
         if(duration<10){
             duration=10;
         }
-        String url= "https://presslu1.pythonanywhere.com/api/test/";
+        String url= Utils.getDOMAIN()+"test/";
         JSONArray quesidarray=new JSONArray(quesIDlist);
         JSONObject jsonObject=new JSONObject();
         try {
@@ -191,9 +189,7 @@ public class CreateTest extends AppCompatActivity implements CreateQuestionDialo
                 return map;
             }
         };
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(jsonObjectRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(jsonObjectRequest);
     }
 
     @Override

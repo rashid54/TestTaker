@@ -91,7 +91,7 @@ public class TestListActivity extends AppCompatActivity {
     public void initTestlist()
     {
         Log.d(TAG, "initTestlist: started");
-        String url= "https://presslu1.pythonanywhere.com/api/test/";
+        String url= Utils.getDOMAIN()+"test/";
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -113,9 +113,7 @@ public class TestListActivity extends AppCompatActivity {
             }
         });
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     public void searchTestlist(String str)
@@ -127,7 +125,7 @@ public class TestListActivity extends AppCompatActivity {
         for(String st:searchtxt){
             str=str+"+"+st;
         }
-        String url= "https://presslu1.pythonanywhere.com/api/test/?search="+str;
+        String url= Utils.getDOMAIN()+"test/?search="+str;
 
         StringRequest stringRequest= new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
@@ -149,8 +147,6 @@ public class TestListActivity extends AppCompatActivity {
             }
         });
 
-        RequestQueue requestQueue= Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-        requestQueue.start();
+        VolleyPoint.getInstance(this).addToRequestQueue(stringRequest);
     }
 }
