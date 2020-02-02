@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -34,7 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Login extends AppCompatActivity {
+public class Login extends AppCompatActivity implements ResetPasswordDialog.ResetPasswordInterface {
     private static final String TAG = "Login";
 
     private EditText Name;
@@ -46,6 +47,7 @@ public class Login extends AppCompatActivity {
     private TextView txtLockTimer;
     private  TextView SignUpMessage;
     private Button SignUp;
+    private Button resetPassword;
     private CheckBox showpassword;
 
     AlertDialog.Builder builder;
@@ -65,6 +67,7 @@ public class Login extends AppCompatActivity {
         Info = findViewById(R.id.tvInfo);
         Login = findViewById(R.id.btnLogin);
 
+        resetPassword= findViewById(R.id.resetpassword);
         SignUp = findViewById(R.id.btnSignUp);
         showpassword=findViewById(R.id.checkbox);
 
@@ -85,6 +88,13 @@ public class Login extends AppCompatActivity {
        // SignUpMessage.setText("Not a member yet?");
 //        SignUpMessage.setVisibility(View.VISIBLE);
          Info.setText("No of attempts remaining: 5");
+         resetPassword.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 ResetPasswordDialog resetPasswordDialog= new ResetPasswordDialog();
+                 resetPasswordDialog.show(getSupportFragmentManager(),"reset password");
+             }
+         });
          SignUp.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
@@ -205,4 +215,37 @@ public class Login extends AppCompatActivity {
 
     }
 
+    public void resetPasswordEmail(String email){
+        Log.d(TAG, "resetPasswordEmail: started");
+
+        String url= Utils.getDOMAIN()+"resetpassword/";
+        Map<String,String> map= new HashMap<>();
+
+        map.put("email",email);
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, new JSONObject(map),
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        Log.d(TAG, "onResponse: started"+ response);
+                        try {
+                            Toast.makeText(Login.this, response.getString("status"), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.d(TAG, "onErrorResponse: started");
+                Toast.makeText(Login.this, "Failed to send Password reset Email.", Toast.LENGTH_SHORT).show();
+            }
+        });
+        VolleyPoint.getInstance(this).addToRequestQueue(jsonObjectRequest);
+    }
+
+    @Override
+    public void resetPassword(String email) {
+        resetPasswordEmail(email);
+    }
 }

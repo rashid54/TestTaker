@@ -175,4 +175,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLockTimer"
         app:layout_constraintVertical_bias="0.151" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resetpassword"
+        android:text="Forgot Password ?"
+        app:layout_constraintTop_toBottomOf="@id/btnSignUp"
+        android:layout_margin="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/cornerd_pink"
+        android:padding="8dp"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
